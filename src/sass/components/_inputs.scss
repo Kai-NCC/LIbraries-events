@@ -1,0 +1,379 @@
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  label {
+    margin-left: 10px;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  input[type=checkbox] {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    border: solid $dark 2px;
+    border-radius: 0;
+    @include media-breakpoint-down(md) {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      min-height: 30px !important;
+    }
+    &:focus, &:focus-visible {
+      box-shadow: none;
+      outline: solid 5px $focus-colour;
+      border: solid $focus-text-colour 5px;
+      border-radius: 0;
+      outline-offset: 0;
+      // background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.95' fill='50505'/%3e%3c/svg%3e");
+    }
+    &:active {
+      filter: none;
+    }
+  }
+}
+.form-check.radio-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  label {
+    margin-left: 10px;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  input {
+    width: 44px;
+    height: 44px;
+    border: solid $dark 2px;
+    &:focus, &:focus-visible {
+      box-shadow: none;
+      outline: solid 5px $focus-colour;
+      border: solid $focus-text-colour 5px;
+      outline-offset: 0;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.95' fill='50505'/%3e%3c/svg%3e");
+    }
+    &:active {
+      filter: none;
+    }
+  }
+}
+.form-text {
+  resize: none;
+  overflow: hidden;
+  height: 60px;
+  &:focus {
+    transition: none;
+    border-color: $focus-colour;
+    outline: solid 4px $focus-colour;
+    box-shadow: none;
+  }
+}
+.form-btn {
+  @include ani;
+  background-color: #1C995D;
+  color: $light;
+  font-size: 1.325rem;
+  font-weight: 600;
+  @include media-breakpoint-down(md) {
+    font-size: 1.25rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 1.125rem;
+    white-space: normal;
+  }
+  &:hover {
+    background-color: #18814e;
+    color: white;
+  }
+  &:focus {
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    outline: solid $focus-text-colour 3px;
+    box-shadow: none;
+    transition: none;
+  }
+}
+.form-btn.form-btn-muted {
+  background-color: white;
+  color: $dark;
+  border: solid $dark 2px;
+  &:hover {
+    background-color: $gray-300;
+  }
+  &:focus {
+    border-color: $focus-colour;
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+  }
+}
+.form-btn-start {
+  display: none;
+  float: right;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 14 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.589844 11.08L5.16984 6.5L0.589844 1.91L1.99984 0.5L7.99984 6.5L1.99984 12.5L0.589844 11.08Z' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 92% 50%;
+  padding-right: 40px;
+  &:focus {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 14 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.589844 11.08L5.16984 6.5L0.589844 1.91L1.99984 0.5L7.99984 6.5L1.99984 12.5L0.589844 11.08Z' fill='black'/%3E%3C/svg%3E");
+  }
+}
+.double-btn-group {
+  display: flex;
+  @include media-breakpoint-down(sm) {
+    justify-content: space-between;
+  }
+}
+.download-btn {
+  svg {
+    margin-right: 10px;
+  }
+  &:focus {
+    border: solid $focus-text-colour 3px;
+    outline: none;
+    svg path {
+      fill: $focus-text-colour;
+    }
+  }
+}
+.question-number {
+  margin-bottom: 5px;
+  color: $gray-600;
+  font-weight: 600;
+}
+.question-title {
+  margin-bottom: 20px;
+}
+.interactive-text-box {
+  border: solid $gray-700 2px;
+  border-radius: 10px;
+  padding: 16px;
+  height: 300px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  display: flex;
+  user-select: none;
+  @include media-breakpoint-down(md) {
+    min-height: none;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .text-box-btn {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.interactive-text-box.empty {
+  @include ani;
+  border: dashed silver 2px;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  .placeholder-text {
+    color: $gray-600;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: $gray-200;
+    border-color: $dark;
+    .placeholder-text {
+      color: $dark;
+    }
+    svg {
+      fill: $dark;
+    }
+  }
+}
+.modal-content {
+  border-radius: 10px;
+}
+.modal-close-button {
+  &:focus {
+    box-shadow: none;
+    background-color: $focus-colour;
+  }
+}
+.modal-body {
+  padding-bottom: 0;
+}
+.modal-selection-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding-bottom: 0;
+  margin
+  hr {
+    margin: 0;
+  }
+}
+.modal-selection-btn {
+  @include ani;
+  border: dashed silver 3px;
+  border-radius: 10px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 16px;
+  background: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin-bottom: 0;
+  }
+  svg {
+    display: none;
+  }
+}
+.modal-selection-btn.selected {
+  border: solid #1C995D 3px;
+  svg {
+    display: block;
+  }
+}
+.reason-custom-label {
+  font-weight: 700;
+  // color: $gray-600;
+}
+.selection-textarea {
+  resize: none;
+  border: solid silver 2px;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 6px;
+  width: 100%;
+}
+.selection-textarea.error {
+  border: solid $danger 2px;
+}
+.modal-header {
+  border: none;
+}
+.modal-footer {
+  border: none;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  .form-btn {
+    width: 100%;
+  }
+}
+.reasons-checkbox {
+  padding: 0;
+  position: relative;
+  .form-check-label {
+    @include ani;
+    border: dashed silver 3px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 16px 32px 16px 16px;
+    justify-content: space-between;
+    user-select: none;
+    cursor: pointer;
+  }
+  input.reasons-input {
+    @include ani;
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    position: absolute;
+    right: 8px;
+    cursor: pointer;
+    &:focus {
+      border: none;
+      outline: none;
+    }
+    &:checked {
+      &[type="checkbox"] {
+        background-image: escape-svg($form-check-input-checked-bg-image-green);
+      }
+      ~ .form-check-label {
+        border: solid #1C995D 3px;
+      }
+    }
+  }
+}
+#addReasonsDiv {
+  display: none;
+}
+#addGoalsDiv {
+  display: none;
+}
+.testclassforinputs {
+  color: red;
+  background-color: aqua;
+}
+.action-plan-btn {
+  @include media-breakpoint-down(md) {
+    margin-top: -20px;
+  }
+  margin-bottom: 20px;
+  float: right;
+}
+.action-plan-btn-clear {
+  @include media-breakpoint-down(md) {
+    margin-top: -20px;
+  }
+  margin-bottom: 20px;
+  float: left;
+  display: none;
+}
+.action-plan-btn-clear-show {
+  display: block;
+}
+.actionbox-active {
+  border-color: #1C995D;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+.actionbox-saved {
+  border-color: $gray-800;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+.action-plan-area {
+  border-bottom: solid #1C995D 2px;
+  border-left: solid #1C995D 2px;
+  border-right: solid #1C995D 2px;
+  border-radius: 0 0 0 10px;
+  padding: 16px;
+  background-color: #34c57f4d;
+  display: none;
+  margin-bottom: 20px;
+}
+.action-plan-area.actionbox-active {
+  display: flex;
+  flex-direction: column;
+}
+.action-plan-area.actionbox-saved {
+  display: flex;
+  flex-direction: column;
+  background-color: $gray-300;
+  border-color: $gray-700;
+}
+.action-plan-area.actionbox-saved textarea {
+  background-color: $gray-300;
+  border-color: $gray-300;
+  color: $dark;
+}
+#continueBtn {
+  display: none;
+}
+#emailInputForm {
+  display: none;
+}

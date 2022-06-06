@@ -1,0 +1,114 @@
+// Main Norfolk styling 
+
+footer {
+  flex-shrink: 0;
+  background-color: $gray-200;
+  a:focus {
+    color: $focus-text-colour;
+    background-color: $focus-colour;
+    text-decoration: underline;
+    outline: none;
+  }
+  p {
+    color: $dark;
+    margin: 0;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    @include media-breakpoint-down(lg) {
+      flex-direction: column;
+    }
+  }
+  .footer-heading {
+    font-weight: 700;
+  }
+  .footer-list {
+    list-style: none;
+    li a {
+      color: $gray-700;
+      margin-bottom: 5px;
+      display: inline-block;
+      font-size: 1rem;
+      &:hover { 
+        color: $dark;
+      }
+    }
+  }
+  .social-media-links {
+    padding-left: 42px;
+    li a {
+      margin: 20px 0;
+      display: flex;
+      position: relative;
+      .social-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        position: absolute;
+        left: -40px;
+        top: -2px;
+        @include ani;
+      }
+      &:hover, &:focus {
+        .social-logo {
+          filter: brightness(125%) grayscale(40%);
+        }
+      }
+    }
+  }
+  .footer-bottom-links {
+    display: flex;
+    justify-content: space-evenly;
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      padding-left: 44px;
+    }
+  }
+  .cookie-link {
+    color: $dark;
+    text-decoration: underline;
+    margin-right: 20px;
+    &:focus {
+      color: $focus-text-colour;
+      background-color: $focus-colour;
+      text-decoration: underline;
+      outline: none;
+    }
+  }
+  .bottom-text, .bottom-text * {
+    font-size: 1rem;
+    margin-top: 20px;
+  }
+  .copyright-wrapper {
+    display: flex;
+    justify-content: center;
+    p {
+      font-size: 1rem;
+      color: $gray-700;
+    }
+  }
+  .logo-hr {
+    display: none;
+    @include media-breakpoint-down(lg) {
+      display: block;
+    }
+  }
+  .footer-logo {
+    a:focus {
+      outline: solid $focus-colour 2px;
+      background-color: transparent;
+    }
+    img {
+      max-width: 100%;
+    }
+    @include media-breakpoint-down(lg) {
+      display: flex;
+      justify-content: center;
+      a {
+        max-width: 40%;
+        object-fit: scale-down;
+      }
+    }
+  }
+}

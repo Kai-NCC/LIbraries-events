@@ -1,0 +1,43 @@
+.navcard {
+  @include ani;
+  box-shadow: none;
+  border: solid $gray-300 1px;
+  border-radius: 3px;
+  background-color: $body-colour-light;
+  .card-body { 
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-title {
+    margin: 0px 0px 5px 0px;
+    a {
+      text-decoration: none;
+      border-bottom: 1px solid #006666;
+      color: #006666;
+      font-weight: 700;
+      font-size: 1.375rem;
+      &:hover {
+        color: $link-colour-hover;
+        border-bottom: 2px solid $link-colour-hover;
+      }
+      &:focus {
+        color: $focus-text-colour;
+        background-color: $focus-colour;
+        border-bottom: 2px solid $focus-text-colour;
+        outline: none;
+      }
+    }
+  }
+  .card-text {
+    margin: 5px 0px 0px 0px;
+    color: $dark;
+    font-weight: 500;
+    a:focus {
+      color: $focus-text-colour;
+      background-color: $focus-colour;
+      outline: none;
+    }
+  }
+}

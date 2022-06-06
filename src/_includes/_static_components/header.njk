@@ -1,0 +1,48 @@
+{# Main Norfolk header #}
+
+<header>
+
+<div class="container">
+    
+    <div class="content-skip">
+      <a href="#main" class="skip-to">Skip to content</a>
+    </div>
+    
+    <div class="top-wrapper">
+
+      <a class="navbar-brand" id="main-logo" href="{{ '/' | url }}">
+        <img src="{{ '/img/NCC-Logo.png' | url }}" alt="NCC Logo">
+      </a>
+      
+      <nav class="navbar" id="navbar-main">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Sign in 
+            </a>
+          </li>
+        </ul>
+      </nav>
+    
+    </div>
+    
+    <div class="search-wrapper">
+      <form class="form-inline d-flex main-search-area" action="{{ '/' | url }}">
+        <input class="form-control" type="search" placeholder="Find services and information" aria-label="Search">
+        <button id="header-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="submit"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 0C8.22391 0 9.87721 0.684819 11.0962 1.90381C12.3152 3.12279 13 4.77609 13 6.5C13 8.11 12.41 9.59 11.44 10.73L11.71 11H12.5L17.5 16L16 17.5L11 12.5V11.71L10.73 11.44C9.59 12.41 8.11 13 6.5 13C4.77609 13 3.12279 12.3152 1.90381 11.0962C0.684819 9.87721 0 8.22391 0 6.5C0 4.77609 0.684819 3.12279 1.90381 1.90381C3.12279 0.684819 4.77609 0 6.5 0ZM6.5 2C4 2 2 4 2 6.5C2 9 4 11 6.5 11C9 11 11 9 11 6.5C11 4 9 2 6.5 2Z" fill="white"/></svg>Search</button>
+      </form>
+    </div>
+  </div>
+
+</header>

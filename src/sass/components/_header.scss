@@ -1,0 +1,176 @@
+// Main Norfolk styling 
+
+header {
+  background-color: white;
+  border-bottom: solid silver 1px;
+  .content-skip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    .skip-to {
+      font-weight: bold;
+      border: none;
+      height: 1px; 
+      width: 1px; 
+      overflow: hidden;
+      clip: rect(1px,1px,1px,1px);
+      padding: 0;
+      position: absolute;
+    }
+    &:focus-within .skip-to {
+      background-color: $focus-colour;
+      color: $focus-text-colour;
+      outline: none;
+      border: none;
+      height: auto; 
+      width: 100%; 
+      overflow: visible;
+      position: static;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.375rem;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+    }
+  }
+  .top-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      align-self: flex-start;
+      padding: 0;
+    }
+    #main-logo {
+      display: flex;
+      flex-direction: column;
+      color: $dark;
+      max-width: 175px;
+      min-width: 140px;
+      padding: 8px;  
+      &:focus {
+        color: $focus-text-colour;
+        background-color: $focus-colour;
+        text-decoration: underline;
+        outline: none;
+      }
+    }
+    #navbar-main {
+      padding: 0;
+      height: 100%;
+      .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: start;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        .dropdown-menu {
+          position: absolute;
+        }
+        .nav-item {
+          margin: 0 20px 0 0;
+          padding: 0;
+          .nav-link {
+            color: $dark;
+            font-size: 1.125rem;
+            font-weight: 700 !important;
+            padding: 8px 0px;            
+            &:hover {
+              color: black;
+            }
+            &:active {
+              color: black;
+            }
+            &:focus {
+              transition: none;
+              color: $focus-text-colour;
+              background-color: $focus-colour;
+              outline: none;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+  .search-wrapper {
+    @include media-breakpoint-down(md) {
+      margin: 0;
+      width: 100%;
+      position: relative;
+      border-top: solid 1px silver;
+      // background-color: $gray-300;
+    }
+  }
+  .main-search-area {
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    @include media-breakpoint-down(md) {
+      width: 100%;
+      margin: 10px 0 10px 0;
+      position: relative;
+    }
+    input { 
+      border: solid silver 1px;
+      border-radius: 5px 0px 0px 5px;
+      min-width: 275px;
+      @include media-breakpoint-down(sm) {
+        min-width: 0;
+      }
+      &:focus {
+        transition: none;
+        border-color: $focus-colour;
+        outline: solid 4px $focus-colour;
+        box-shadow: none;
+      } 
+    }
+    button {
+      background-color: #006666;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      align-items: center;
+      box-sizing: border-box;
+      @include media-breakpoint-down(sm) {
+        height: 40px;
+      }
+      &:hover {
+        color: white;
+        background-color: $dark; 
+      }
+      &:focus {
+        transition: none;
+        border-color: $focus-colour;
+        background-color: $focus-colour;
+        color: $focus-text-colour;
+        outline: none;
+        box-shadow: none;
+        path {
+          fill: $focus-text-colour;
+        }
+      } 
+      &:active:focus {
+        box-shadow: none;
+      }
+      svg {
+        transform: translateX(-20%);
+        margin-right: 5px;
+      }
+    }
+  }
+}

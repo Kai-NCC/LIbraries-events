@@ -1,3 +1,191 @@
+@import "bootstrap/bootstrap";
+
+$focus-colour: #ffdd00;
+$focus-text-colour: #0b0c0c;
+$link-colour: #4840f3;
+$link-colour-hover: darken(#4840f3, 10%);
+$body-colour: #111;
+$body-text-colour: $light;
+// light theme
+$body-colour-light: white;
+$body-text-colour-light: $dark;
+$object-shadow: 0px 4px 7px rgba(0, 0, 0, 0.2);
+$object-shadow-hover: 0px 10px 18px rgba(0, 0, 0, 0.5);
+
+@mixin ani {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
+}
+@import
+  "components/general_card",
+  "components/navigation_card",
+  "components/promo_card",
+  "components/image_card",
+  "components/timeline",
+  "components/figure",
+  "components/header",
+  "components/footer",
+  "components/section_full_width",
+  "components/section_nav",
+  "components/object_promo",
+  "components/stage",
+  "components/inputs",
+  "components/breadcrumbs",
+  "components/accordion"
+;
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Mulish', sans-serif;
+  background-color: $body-colour-light;
+}
+main {
+  flex: 1 0 auto;
+}
 p {
-  color: red;
+  font-size: 1.125rem;
+  color: $dark;
+}
+.lead {
+  font-weight: 600;
+  font-size: 1.375rem;
+}
+a {
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: $link-colour;
+  &:hover {
+    text-decoration: underline;
+    color: $link-colour-hover;
+  }
+  &:focus {
+    color: $focus-text-colour;
+    background-color: $focus-colour;
+    text-decoration: underline;
+    outline: none;
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+}
+pre {
+  font-size: 1.125rem;
+  border-radius: 6px;
+}
+p code {
+  font-size: 1.125rem;
+}
+#componentsListAccordion {
+  display: none;
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+}
+#componentsListSidebar {
+  display: block;
+  @include media-breakpoint-down(md) {
+    display: none; 
+  }
+}
+.navbar-nav .nav-item {
+  @include media-breakpoint-down(lg) {
+    text-align: center;
+  }  
+}
+.features-list li {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.back-to-top {
+  display: inline-block;
+  &:hover {
+    svg path {
+      fill: $link-colour-hover;
+    }
+  }
+  &:focus {
+    svg path {
+      fill: $focus-text-colour;
+    }
+  }
+}
+.download-wrapper {
+  background-color: #006666;
+  height: 250px;
+  padding: 0;
+  padding-top: 20px;
+  display: none;
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+  .download-image {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    img {
+      width: 220px;
+    }
+  }
+  .container {
+    // height: calc(100% + 10px);
+    margin-top: -40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+.reasons-summary-list {
+  display: block;
+  border: solid $gray-500 1px;
+  border-radius: 6px;
+  padding: 20px;
+  li {
+    margin: 10px;
+  }
+}
+.goal-summary-list {
+  display: block;
+  border: solid $gray-500 1px;
+  border-radius: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  overflow-wrap: break-word;
+  .goal-summary-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-bottom: solid $gray-500 1px;
+    margin-bottom: 10px;
+    ul {
+      font-size: 1rem;
+      font-weight: 500;
+      list-style: none;
+      padding: 10px;
+    }
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0px;
+    }
+  }
+}
+.green-info-box {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  svg {
+    margin-right: 12px;
+    path {
+      fill: #0f5132;
+    }
+  }
 }

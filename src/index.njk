@@ -1,5 +1,66 @@
 {% extends "template.njk" %}
 
+{% import "_pattern_macros/navigation_card.njk" as navcard %}
+{% import "_pattern_macros/general_card.njk" as generalcard %}
+
 {% block main %}
-  <p>Some random HTML</p>
+
+  <section class="breadcrumbs">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb my-2">
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Libraries, local history and archives</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Libraries</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Your local library</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Find your local library</a></li>
+          <li class="breadcrumb-item active">Acle Library</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <div class="stage" id="libraryStage" style="background-image: url('/Libraries-events/public/img/great_yarmouth_library.jpg')">
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="row {{rowDefaults}}">
+        <div class="col-12 col-md-8">
+          <h1>Acle Library</h1>
+          <p>Address: Bridewell Lane, Acle, NR13 3RA</p>
+          <p><a href="#">Map showing the location of Acle Library</a></p>
+          <p>Email:&nbsp;<a href="#">libraries@norfolk.gov.uk</a></p>
+          <ul>
+            <li><a href="#">Follow Acle Library on Facebook</a></li>
+          </ul>
+          <p>Did you know you can&nbsp;<a href="#">renew your library books online</a>? You will need your library card and PIN.</p>
+          <h2>Opening hours</h2>
+          <ul>
+            <li>Monday: 8am-7pm (Open Library access only)</li>
+            <li>Tuesday: 10am-7pm (8-10am Open Library access only)</li>
+            <li>Wednesday: 8am-7pm (Open Library access only)</li>
+            <li>Thursday: 10am-7pm (8-10am Open Library access only)</li>
+            <li>Friday: 2-7pm (8am-2pm Open Library access only)</li>
+            <li>Saturday: 1-4pm (8am-1pm Open Library access only)</li>
+            <li>Sunday: 10am-4pm (Open Library Access only)</li>
+          </ul>
+          <p>Read our <a href="#">library service coronavirus update</a>&nbsp; before visiting.</p>
+          <p>You can return items when the library is closed using&nbsp;the letterbox to the left of the main entrance.&nbsp; Please make sure that books drop into the box completely and are not left sticking out.</p>
+          <h2>Services at Acle Library</h2>
+          <ul>
+            <li><a href="#">Browse and borrow books and other library items</a></li>
+            <li><a href="#">Free access to computers and wifi</a></li>
+            <li>Automatic doors</li>
+            <li>Public car park nearby</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="row {{rowDefaults}}">
+            {{ generalcard.generalcard('Renew a library item', '', '', '', '', 'You can renew library items online using your library card number and PIN', '', '/', 'card-light') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

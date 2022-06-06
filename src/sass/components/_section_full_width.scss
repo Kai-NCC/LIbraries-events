@@ -1,0 +1,27 @@
+section {
+  padding: 20px 0px 20px 0px;
+  width: 100%;
+}
+section.section_dark_theme  {
+  background-color: $body-colour;
+  color: $body-text-colour;
+  p {
+    color: $body-text-colour;
+  }
+}
+section.section_light_theme {
+  background-color: $body-colour-light;
+  color: $body-text-colour-light;
+}
+section.section_stage_theme {
+  background-color: $gray-300;
+  color: $dark;
+  padding: 40px 0px;
+  margin-bottom: 40px;
+  .lead {
+    color: $dark;
+    font-weight: 400;
+    margin: 20px 0 10px 0;
+    font-size: 1.25rem;
+  }
+}
