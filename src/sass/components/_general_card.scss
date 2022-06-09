@@ -141,3 +141,15 @@
     color: $gray-700;
   }
 }
+.card-horizontal {
+  flex-direction: row;
+  .img-wrapper {
+    max-width: 50%;
+  }
+  .card-body {
+    padding: 10px;
+    .card-location {
+      margin: 0;
+    }
+  }
+}

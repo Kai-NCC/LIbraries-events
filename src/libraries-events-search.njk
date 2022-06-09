@@ -1,0 +1,709 @@
+{% extends "template.njk" %}
+
+{% import "_pattern_macros/navigation_card.njk" as navcard %}
+{% import "_pattern_macros/general_card.njk" as generalcard %}
+
+{% block main %}
+
+  <section class="breadcrumbs">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb my-2">
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Libraries, local history and archives</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">Libraries</a></li>
+          <li class="breadcrumb-item"><a href="{{ '/' | url }}">What's on in Norfolk libraries</a></li>
+          <li class="breadcrumb-item active">Libraries events search</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row {{rowDefaults}}">
+        <div class="col-12">
+          <h1 class="h2">Libraries events search</h1>
+          <div class="row {{rowDefaults}}">
+            <div class="search-component">
+    <div class="search-settings">
+      <div class="filters">
+        <div id="toggleCollection" class="dropdown">
+          <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuCollection" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside">
+            Location
+          </button>
+          <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDepartamentButton" data-bs-toggle="modal" data-bs-target="#filterModalDepartament" aria-expanded="false"  data-bs-auto-close="outside">
+            Location
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuCollection">
+            <li class="selection-item">
+              <label class="form-check-label" for="collection1check">
+                <input type="checkbox" class="form-check-input" id="collection1check">
+                <div class="text-wrapper">
+                  Acle
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection2check">
+                <input type="checkbox" class="form-check-input" id="collection2check">
+                <div class="text-wrapper">
+                  Attleborough
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection3check">
+                <input type="checkbox" class="form-check-input" id="collection3check">
+                <div class="text-wrapper">
+                  Aylsham
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection4check">
+                <input type="checkbox" class="form-check-input" id="collection4check">
+                <div class="text-wrapper">
+                  Blofield
+                </div>
+              </label>
+            </li>
+
+            <li class="selection-item">  
+              <label class="form-check-label" for="collection5check">
+                <input type="checkbox" class="form-check-input" id="collection5check">
+                <div class="text-wrapper">
+                  Brundall
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection6check">
+                <input type="checkbox" class="form-check-input" id="collection6check">
+                <div class="text-wrapper">
+                  Caister
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection7check">
+                <input type="checkbox" class="form-check-input" id="collection7check">
+                <div class="text-wrapper">
+                  Costessy
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection8check">
+                <input type="checkbox" class="form-check-input" id="collection8check">
+                <div class="text-wrapper">
+                  Cromer
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection9check">
+                <input type="checkbox" class="form-check-input" id="collection9check">
+                <div class="text-wrapper">
+                  Dereham
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection10check">
+                <input type="checkbox" class="form-check-input" id="collection10check">
+                <div class="text-wrapper">
+                  Dersingham
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection11check">
+                <input type="checkbox" class="form-check-input" id="collection11check">
+                <div class="text-wrapper">
+                  Diss
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection12check">
+                <input type="checkbox" class="form-check-input" id="collection12check">
+                <div class="text-wrapper">
+                  Downham Market
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection13check">
+                <input type="checkbox" class="form-check-input" id="collection13check">
+                <div class="text-wrapper">
+                  Earlham Norwich
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection14check">
+                <input type="checkbox" class="form-check-input" id="collection14check">
+                <div class="text-wrapper">
+                  Fakenham
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection15check">
+                <input type="checkbox" class="form-check-input" id="collection15check">
+                <div class="text-wrapper">
+                  Gaywood
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection16check">
+                <input type="checkbox" class="form-check-input" id="collection16check">
+                <div class="text-wrapper">
+                  Gorleston
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection17check">
+                <input type="checkbox" class="form-check-input" id="collection17check">
+                <div class="text-wrapper">
+                  Great Yarmouth
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection18check">
+                <input type="checkbox" class="form-check-input" id="collection18check">
+                <div class="text-wrapper">
+                  Harleston
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection19check">
+                <input type="checkbox" class="form-check-input" id="collection19check">
+                <div class="text-wrapper">
+                  Hellesdon
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="collection20check">
+                <input type="checkbox" class="form-check-input" id="collection20check">
+                <div class="text-wrapper">
+                  Hethersett
+                </div>
+              </label>
+            </li>
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </ul>
+        </div>
+        <div id="toggleMuseum" class="dropdown">
+          <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuMuseum" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            Subject
+          </button>
+          <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDisplayedButton" data-bs-toggle="modal" data-bs-target="#filterModalDisplayed" aria-expanded="false"  data-bs-auto-close="outside">
+            Subject
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuMuseum">
+            <li class="selection-item">
+              <label class="form-check-label" for="museum1check">
+                <input type="checkbox" class="form-check-input" id="museum1check">
+                <div class="text-wrapper">
+                  Norwich Castle<p class="smaller-text">Norwich</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum2check">
+                <input type="checkbox" class="form-check-input" id="museum2check">
+                <div class="text-wrapper">
+                  Time and Tide<p class="smaller-text">Great Yarmouth</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">  
+              <label class="form-check-label" for="museum3check">
+                <input type="checkbox" class="form-check-input" id="museum3check">
+                <div class="text-wrapper">
+                  Gressenhall Farm & Workhouse<p class="smaller-text">Dereham</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum4check">
+                <input type="checkbox" class="form-check-input" id="museum4check">
+                <div class="text-wrapper">
+                  Museum of Norwich<p class="smaller-text">Norwich</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum5check">
+                <input type="checkbox" class="form-check-input" id="museum5check">
+                <div class="text-wrapper">
+                  Elizabethan House<p class="smaller-text">Great Yarmouth</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum6check">
+                <input type="checkbox" class="form-check-input" id="museum6check">
+                <div class="text-wrapper">
+                  Strangers' Hall<p class="smaller-text">Norwich</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum7check">
+                <input type="checkbox" class="form-check-input" id="museum7check">
+                <div class="text-wrapper">
+                  Lynn Museum<p class="smaller-text">King's Lynn</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum8check">
+                <input type="checkbox" class="form-check-input" id="museum8check">
+                <div class="text-wrapper">
+                  Cromer Museum<p class="smaller-text">Cromer</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum9check">
+                <input type="checkbox" class="form-check-input" id="museum9check">
+                <div class="text-wrapper">
+                  Tollhouse Gaol<p class="smaller-text">Great Yarmouth</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="museum10check">
+                <input type="checkbox" class="form-check-input" id="museum10check">
+                <div class="text-wrapper">
+                  Ancient House<p class="smaller-text">Thetford</p>
+                </div>
+              </label>
+            </li>
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </ul>
+        </div>
+        <div id="toggleDate" class="dropdown">
+          <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuDate" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            Date range
+          </button>
+          <button class="modal-btn btn btn-outline-dark" type="button" id="filterModaDateButton" data-bs-toggle="modal" data-bs-target="#filterModalDate" aria-expanded="false"  data-bs-auto-close="outside">
+            Date range
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
+            <li class="selection-item">
+              <label class="form-check-label" for="date1check">
+                <input type="checkbox" class="form-check-input" id="date1check">
+                <div class="text-wrapper">
+                  1900-present<p class="smaller-text">9546 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date2check">
+                <input type="checkbox" class="form-check-input" id="date2check">
+                <div class="text-wrapper">
+                  1800-1900<p class="smaller-text">9322 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">  
+              <label class="form-check-label" for="date3check">
+                <input type="checkbox" class="form-check-input" id="date3check">
+                <div class="text-wrapper">
+                  1700-1800<p class="smaller-text">6102 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date4check">
+                <input type="checkbox" class="form-check-input" id="date4check">
+                <div class="text-wrapper">
+                  1500-1700<p class="smaller-text">4125 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date5check">
+                <input type="checkbox" class="form-check-input" id="date5check">
+                <div class="text-wrapper">
+                  1200-1500<p class="smaller-text">2679 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date6check">
+                <input type="checkbox" class="form-check-input" id="date6check">
+                <div class="text-wrapper">
+                  1000-1200<p class="smaller-text">1884 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date7check">
+                <input type="checkbox" class="form-check-input" id="date7check">
+                <div class="text-wrapper">
+                  500-1000<p class="smaller-text">124 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date8check">
+                <input type="checkbox" class="form-check-input" id="date8check">
+                <div class="text-wrapper">
+                  0-500<p class="smaller-text">1212 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date9check">
+                <input type="checkbox" class="form-check-input" id="date9check">
+                <div class="text-wrapper">
+                  2000-0 BCE.<p class="smaller-text">245 records</p>
+                </div>
+              </label>
+            </li>
+            <li class="selection-item">
+              <label class="form-check-label" for="date10check">
+                <input type="checkbox" class="form-check-input" id="date10check">
+                <div class="text-wrapper">
+                  8000-2000 BCE.<p class="smaller-text">5522 records</p>
+                </div>
+              </label>
+            </li>
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal - Departament -->
+    <div class="modal fade" id="filterModalDepartament" tabindex="-1" aria-labelledby="filterModalLabelDepartament" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="filterModalLabelDepartament">Location</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
+          </div>
+          <div class="modal-body">
+            <div class="filter-section">
+              <ul class="section-list">
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection1checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection1checkModal">
+                    <div class="text-wrapper">
+                      Archaeology
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection2checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection2checkModal">
+                    <div class="text-wrapper">
+                      Costume and textiles
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">  
+                  <label class="form-check-label" for="collection3checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection3checkModal">
+                    <div class="text-wrapper">
+                      Decorative Arts
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection5checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection5checkModal">
+                    <div class="text-wrapper">
+                      Geology
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection6checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection6checkModal">
+                    <div class="text-wrapper">
+                      Natural History
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection7checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection7checkModal">
+                    <div class="text-wrapper">
+                      Royal Norfolk Regimental Museum's Collection
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="collection8checkModal">
+                    <input type="checkbox" class="form-check-input" id="collection8checkModal">
+                    <div class="text-wrapper">
+                      Social History
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal - Displayed -->
+    <div class="modal fade" id="filterModalDisplayed" tabindex="-1" aria-labelledby="filterModalLabelDisplayed" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="filterModalLabelDisplayed">Subject</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
+          </div>
+          <div class="modal-body">
+            <div class="filter-section">
+              <ul class="section-list">
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum1checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum1checkModal">
+                    <div class="text-wrapper">
+                      Norwich Castle<p class="smaller-text">Norwich</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum2checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum2checkModal">
+                    <div class="text-wrapper">
+                      Time and Tide<p class="smaller-text">Great Yarmouth</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">  
+                  <label class="form-check-label" for="museum3checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum3checkModal">
+                    <div class="text-wrapper">
+                      Gressenhall Farm & Workhouse<p class="smaller-text">Dereham</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum4checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum4checkModal">
+                    <div class="text-wrapper">
+                      Museum of Norwich<p class="smaller-text">Norwich</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum5checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum5checkModal">
+                    <div class="text-wrapper">
+                      Elizabethan House<p class="smaller-text">Great Yarmouth</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum6checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum6check"Modal>
+                    <div class="text-wrapper">
+                      Strangers' Hall<p class="smaller-text">Norwich</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum7checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum7checkModal">
+                    <div class="text-wrapper">
+                      Lynn Museum<p class="smaller-text">King's Lynn</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum8checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum8checkModal">
+                    <div class="text-wrapper">
+                      Cromer Museum<p class="smaller-text">Cromer</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum9checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum9checkModal">
+                    <div class="text-wrapper">
+                      Tollhouse Gaol<p class="smaller-text">Great Yarmouth</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="museum10checkModal">
+                    <input type="checkbox" class="form-check-input" id="museum10checkModal">
+                    <div class="text-wrapper">
+                      Ancient House<p class="smaller-text">Thetford</p>
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal - Date -->
+    <div class="modal fade" id="filterModalDate" tabindex="-1" aria-labelledby="filterModalLabelDate" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="filterModalLabelDate">Date range</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
+          </div>
+          <div class="modal-body">
+            <div class="filter-section">
+              <ul class="section-list">
+                <li class="selection-item">
+                  <label class="form-check-label" for="date1checkModal">
+                    <input type="checkbox" class="form-check-input" id="date1checkModal">
+                    <div class="text-wrapper">
+                      1900-present<p class="smaller-text">9546 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date2checkModal">
+                    <input type="checkbox" class="form-check-input" id="date2checkModal">
+                    <div class="text-wrapper">
+                      1800-1900<p class="smaller-text">9322 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">  
+                  <label class="form-check-label" for="date3checkModal">
+                    <input type="checkbox" class="form-check-input" id="date3checkModal">
+                    <div class="text-wrapper">
+                      1700-1800<p class="smaller-text">6102 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date4checkModal">
+                    <input type="checkbox" class="form-check-input" id="date4checkModal">
+                    <div class="text-wrapper">
+                      1500-1700<p class="smaller-text">4125 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date5checkModal">
+                    <input type="checkbox" class="form-check-input" id="date5checkModal">
+                    <div class="text-wrapper">
+                      1200-1500<p class="smaller-text">2679 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date6checkModal">
+                    <input type="checkbox" class="form-check-input" id="date6checkModal">
+                    <div class="text-wrapper">
+                      1000-1200<p class="smaller-text">1884 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date7checkModal">
+                    <input type="checkbox" class="form-check-input" id="date7checkModal">
+                    <div class="text-wrapper">
+                      500-1000<p class="smaller-text">124 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date8checkModal">
+                    <input type="checkbox" class="form-check-input" id="date8checkModal">
+                    <div class="text-wrapper">
+                      0-500<p class="smaller-text">1212 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date9checkModal">
+                    <input type="checkbox" class="form-check-input" id="date9checkModal">
+                    <div class="text-wrapper">
+                      2000-0 BCE.<p class="smaller-text">245 records</p>
+                    </div>
+                  </label>
+                </li>
+                <li class="selection-item">
+                  <label class="form-check-label" for="date10checkModal">
+                    <input type="checkbox" class="form-check-input" id="date10checkModal">
+                    <div class="text-wrapper">
+                      8000-2000 BCE.<p class="smaller-text">5522 records</p>
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <ul class="dropdown-bottom-section">
+              <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
+              <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+            <hr class="ncc-hr">
+            <div class="row {{rowDefaults}}">
+              <div class="col-4">
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+              </div>
+              <div class="col-4">
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+              </div>
+              <div class="col-4">
+                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022 • 4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+              </div>
+              <div class="col-4">
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+              </div>
+              <div class="col-4">
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

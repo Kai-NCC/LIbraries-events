@@ -377,3 +377,54 @@
 #emailInputForm {
   display: none;
 }
+
+button:focus:not(:focus-visible) {
+  outline: auto;
+}
+
+.btn-check:focus + .btn, .btn:focus {
+  outline: auto;
+}
+
+.btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+.btn-libraries {
+  background-color: #006666;
+  &:hover {
+    background-color: #006666;
+    background-color: darken(#006666, 5%);
+  }
+  &:focus, &:focus-visible {
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+.btn-libraries.btn-outline-dark {
+  background-color: transparent;
+  &:hover {
+    background-color: $dark;
+    text-decoration: underline;
+  }
+  &:focus, &:focus-visible {
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    box-shadow: none;
+    transition: none;
+  }
+}
+
+.btn-libraries-link {
+  border: 1px solid transparent;
+  &:focus {
+    border-color: $focus-text-colour;
+    
+  }
+  &:focus-visible {
+   outline-offset: 0;
+ }
+}
