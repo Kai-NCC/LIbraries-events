@@ -1,14 +1,14 @@
 .modal-btn {
   display: none;
   
-  @include media-breakpoint-down(xl) {
+  @include media-breakpoint-down(md) {
     display: block;
   }
 }
 .dropdown-btn {
   display: block;
   
-  @include media-breakpoint-down(xl) {
+  @include media-breakpoint-down(md) {
     display: none;
   }
 }
@@ -96,6 +96,7 @@
       box-shadow: none;
       color: $focus-text-colour;
       background-color: $focus-colour;
+      text-decoration: underline;
       
       svg path {
         fill: $focus-text-colour;
@@ -161,7 +162,7 @@
       .dropdown {
         margin-right: 10px;
         @include media-breakpoint-down(xl) { margin-right: 5px; margin-top: 5px; }
-        
+
         @include media-breakpoint-down(md) {
           button { font-size: 1rem; }
         } 
@@ -176,6 +177,14 @@
           max-height: 400px;
           overflow-y: scroll;
           position: relative;
+
+          @include media-breakpoint-down(lg) {
+            // position: absolute;
+            // width: 100%;
+            // top: 0 !important;
+            // left: 0 !important;
+            // transform: none;
+          }
         }
         .dropdown-menu.show {
           padding: 0;
@@ -377,8 +386,8 @@
   }
   
   .modal-content {
-    background-color: $dark;
-    border: solid $light 2px;
+    background-color: white;
+    border: none;
     border-radius: 6px;
     padding: 0;
     max-height: 600px;
@@ -389,8 +398,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: $dark;
-      box-shadow: 0px 2px 25px 0px black;
+      background-color: white;
 
       .btn-close {
         background-color: $light;
@@ -446,11 +454,12 @@
       padding: 0;
       position: sticky;
       bottom: 0;
-      background-color: $dark;
-      box-shadow: 0px -2px 25px 0px black;
-      
+      background-color: white;
+            
       .dropdown-bottom-section {
         border: none;
+        border-top: solid 1px $gray-500;
+        border-radius: 0 0 6px 6px;
         list-style: none;
         box-shadow: none;
       }
@@ -489,5 +498,61 @@
         }
       }
     }
+  }
+}
+
+.libraries-search-area {
+  max-width: 600px;
+
+  input { 
+    border: solid silver 1px;
+    border-radius: 5px 0px 0px 5px;
+    min-width: 275px;
+    @include media-breakpoint-down(sm) {
+      min-width: 0;
+    }
+    &:focus {
+      transition: none;
+      border-color: $focus-colour;
+      outline: solid 4px $focus-colour;
+      box-shadow: none;
+    } 
+  }
+}
+
+#libraries-search-button {
+  background-color: #006666;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 110px;
+  @include media-breakpoint-down(sm) {
+    height: 40px;
+  }
+  &:hover {
+    color: white;
+    background-color: $dark; 
+  }
+  &:focus {
+    transition: none;
+    border-color: $focus-colour;
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    outline: none;
+    box-shadow: none;
+    path {
+      fill: $focus-text-colour;
+    }
+  } 
+  &:active:focus {
+    box-shadow: none;
+  }
+  svg {
+    transform: translateX(-20%);
+    margin-right: 5px;
   }
 }
