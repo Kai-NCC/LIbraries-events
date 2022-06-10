@@ -1097,13 +1097,16 @@
 
         console.log(`CHECKED LOCATIONS = ${locationsArray}`);
 
-        if (numberOfLocations > 1) {
+        if (locationsArray.length > 1) {
+          console.log(`MORE THAN one location, setting button text to = ${locationsArray.length}`);
           dropdownButton.innerHTML = `Location • ${locationsArray.length}`;
           modalButton.innerHTML = `Location • ${locationsArray.length}`;
-        } else if (numberOfLocations == 1) {
+        } else if (locationsArray.length == 1) {
+          console.log(`one location, setting button text to = ${locationsArray[0]}`);
           dropdownButton.innerHTML = `${locationsArray[0]}`;
           modalButton.innerHTML = `${locationsArray[0]}`;
         } else {
+          console.log(`other, setting button text to = Location`);
           dropdownButton.innerHTML = `Location`;
           modalButton.innerHTML = `Location`;
         }
