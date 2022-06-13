@@ -205,200 +205,157 @@
                           </label>
                         </li>
                         <ul class="dropdown-bottom-section">
-                          <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFilters(this.form.locationOption)">Apply filters</button></li>
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationOption)">Apply filters</button></li>
                         </ul>
                       </ul>
                     </div>
                   </form>
-                  <div id="toggleMuseum" class="dropdown">
-                    <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuMuseum" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                      Subject
-                    </button>
-                    <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDisplayedButton" data-bs-toggle="modal" data-bs-target="#filterModalDisplayed" aria-expanded="false"  data-bs-auto-close="outside">
-                      Subject
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuMuseum">
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum1check">
-                          <input type="checkbox" class="form-check-input" id="museum1check">
-                          <div class="text-wrapper">
-                            Norwich Castle<p class="smaller-text">Norwich</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum2check">
-                          <input type="checkbox" class="form-check-input" id="museum2check">
-                          <div class="text-wrapper">
-                            Time and Tide<p class="smaller-text">Great Yarmouth</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">  
-                        <label class="form-check-label" for="museum3check">
-                          <input type="checkbox" class="form-check-input" id="museum3check">
-                          <div class="text-wrapper">
-                            Gressenhall Farm & Workhouse<p class="smaller-text">Dereham</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum4check">
-                          <input type="checkbox" class="form-check-input" id="museum4check">
-                          <div class="text-wrapper">
-                            Museum of Norwich<p class="smaller-text">Norwich</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum5check">
-                          <input type="checkbox" class="form-check-input" id="museum5check">
-                          <div class="text-wrapper">
-                            Elizabethan House<p class="smaller-text">Great Yarmouth</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum6check">
-                          <input type="checkbox" class="form-check-input" id="museum6check">
-                          <div class="text-wrapper">
-                            Strangers' Hall<p class="smaller-text">Norwich</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum7check">
-                          <input type="checkbox" class="form-check-input" id="museum7check">
-                          <div class="text-wrapper">
-                            Lynn Museum<p class="smaller-text">King's Lynn</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum8check">
-                          <input type="checkbox" class="form-check-input" id="museum8check">
-                          <div class="text-wrapper">
-                            Cromer Museum<p class="smaller-text">Cromer</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum9check">
-                          <input type="checkbox" class="form-check-input" id="museum9check">
-                          <div class="text-wrapper">
-                            Tollhouse Gaol<p class="smaller-text">Great Yarmouth</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="museum10check">
-                          <input type="checkbox" class="form-check-input" id="museum10check">
-                          <div class="text-wrapper">
-                            Ancient House<p class="smaller-text">Thetford</p>
-                          </div>
-                        </label>
-                      </li>
-                      <ul class="dropdown-bottom-section">
-                        <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
-                        <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+                  <form id="subjectDropdownForm">
+                    <div id="toggleSubject" class="dropdown">
+                      <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuSubject" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside">
+                        Subject
+                      </button>
+                      <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalSubjectButton" data-bs-toggle="modal" data-bs-target="#filterModalSubject" aria-expanded="false"  data-bs-auto-close="outside">
+                        Subject
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuSubject">
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject1check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Autism-friendly" id="subject1check">
+                            <div class="text-wrapper">
+                              Autism-friendly
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject2check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Baby and Toddlers" id="subject2check">
+                            <div class="text-wrapper">
+                              Baby and Toddlers
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject3check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Business & Enterprise" id="subject3check">
+                            <div class="text-wrapper">
+                              Business & Enterprise
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject4check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Crafting" id="subject4check">
+                            <div class="text-wrapper">
+                              Crafting
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject5check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Creativity" id="subject5check">
+                            <div class="text-wrapper">
+                              Creativity
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject6check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Cultural Activities" id="subject6check">
+                            <div class="text-wrapper">
+                              Cultural Activities
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject7check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Digital" id="subject7check">
+                            <div class="text-wrapper">
+                              Digital
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject8check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Family Fun" id="subject8check">
+                            <div class="text-wrapper">
+                              Family Fun
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject9check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Health and Wellbeing" id="subject9check">
+                            <div class="text-wrapper">
+                              Health and Wellbeing
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject10check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Heritage" id="subject10check">
+                            <div class="text-wrapper">
+                              Heritage
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject11check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Reading" id="subject11check">
+                            <div class="text-wrapper">
+                              Reading
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject12check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="SEND" id="subject12check">
+                            <div class="text-wrapper">
+                              SEND
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject13check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Skills and Training" id="subject13check">
+                            <div class="text-wrapper">
+                              Skills and Training
+                            </div>
+                          </label>
+                        </li>
+                        <li class="selection-item">
+                          <label class="form-check-label" for="subject14check">
+                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Young People" id="subject14check">
+                            <div class="text-wrapper">
+                              Young People
+                            </div>
+                          </label>
+                        </li>
+                        <ul class="dropdown-bottom-section">
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectOption)">Apply filters</button></li>
+                        </ul>
                       </ul>
-                    </ul>
-                  </div>
-                  <div id="toggleDate" class="dropdown">
-                    <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuDate" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                      Date range
-                    </button>
-                    <button class="modal-btn btn btn-outline-dark" type="button" id="filterModaDateButton" data-bs-toggle="modal" data-bs-target="#filterModalDate" aria-expanded="false"  data-bs-auto-close="outside">
-                      Date range
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date1check">
-                          <input type="checkbox" class="form-check-input" id="date1check">
-                          <div class="text-wrapper">
-                            1900-present<p class="smaller-text">9546 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date2check">
-                          <input type="checkbox" class="form-check-input" id="date2check">
-                          <div class="text-wrapper">
-                            1800-1900<p class="smaller-text">9322 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">  
-                        <label class="form-check-label" for="date3check">
-                          <input type="checkbox" class="form-check-input" id="date3check">
-                          <div class="text-wrapper">
-                            1700-1800<p class="smaller-text">6102 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date4check">
-                          <input type="checkbox" class="form-check-input" id="date4check">
-                          <div class="text-wrapper">
-                            1500-1700<p class="smaller-text">4125 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date5check">
-                          <input type="checkbox" class="form-check-input" id="date5check">
-                          <div class="text-wrapper">
-                            1200-1500<p class="smaller-text">2679 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date6check">
-                          <input type="checkbox" class="form-check-input" id="date6check">
-                          <div class="text-wrapper">
-                            1000-1200<p class="smaller-text">1884 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date7check">
-                          <input type="checkbox" class="form-check-input" id="date7check">
-                          <div class="text-wrapper">
-                            500-1000<p class="smaller-text">124 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date8check">
-                          <input type="checkbox" class="form-check-input" id="date8check">
-                          <div class="text-wrapper">
-                            0-500<p class="smaller-text">1212 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date9check">
-                          <input type="checkbox" class="form-check-input" id="date9check">
-                          <div class="text-wrapper">
-                            2000-0 BCE.<p class="smaller-text">245 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <li class="selection-item">
-                        <label class="form-check-label" for="date10check">
-                          <input type="checkbox" class="form-check-input" id="date10check">
-                          <div class="text-wrapper">
-                            8000-2000 BCE.<p class="smaller-text">5522 records</p>
-                          </div>
-                        </label>
-                      </li>
-                      <ul class="dropdown-bottom-section">
-                        <li><a class="filter-control-btn clear-filter" href="#">Clear</a></li>
-                        <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
+                    </div>
+                  </form>
+                  <form id="dateDropdownForm">
+                    <div id="toggleDate" class="dropdown">
+                      <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuDate" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside">
+                        Date range
+                      </button>
+                      <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDateButton" data-bs-toggle="modal" data-bs-target="#filterModalDate" aria-expanded="false"  data-bs-auto-close="outside">
+                        Date range
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
+                        (Date picker goes here)
+                        <ul class="dropdown-bottom-section">
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="S()">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button></li>
+                        </ul>
                       </ul>
-                    </ul>
-                  </div>
+                    </div>
+                  </form>
                 </div>
               </div>
               <!-- Modal - Location -->
@@ -503,7 +460,7 @@
                               </li>
                               <li class="selection-item">
                                 <label class="form-check-label" for="collection12checkModal">
-                                  <input type="checkbox" class="form-check-input"  name="locationModalOption" value="Dowhnham Market" id="collection12checkModal">
+                                  <input type="checkbox" class="form-check-input"  name="locationModalOption" value="Downham Market" id="collection12checkModal">
                                   <div class="text-wrapper">
                                     Downham Market
                                   </div>
@@ -578,220 +535,173 @@
                       </div>
                       <div class="modal-footer">
                         <ul class="dropdown-bottom-section">
-                          <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFilters(this.form.locationModalOption)">Apply filters</button></li>
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationModalOption)">Apply filters</button></li>
                         </ul>
                       </div>
                     </form>
                   </div>
                 </div>
-              </div>
-              <!-- Modal - Displayed -->
-              <div class="modal fade" id="filterModalDisplayed" tabindex="-1" aria-labelledby="filterModalLabelDisplayed" aria-hidden="true">
+              </div> 
+              <!-- Modal - Subject -->
+              <div class="modal fade" id="filterModalSubject" tabindex="-1" aria-labelledby="filterModalLabelSubject" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="filterModalLabelDisplayed">Subject</h3>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="filter-section">
-                        <ul class="section-list">
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum1checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum1checkModal">
-                              <div class="text-wrapper">
-                                Norwich Castle<p class="smaller-text">Norwich</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum2checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum2checkModal">
-                              <div class="text-wrapper">
-                                Time and Tide<p class="smaller-text">Great Yarmouth</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">  
-                            <label class="form-check-label" for="museum3checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum3checkModal">
-                              <div class="text-wrapper">
-                                Gressenhall Farm & Workhouse<p class="smaller-text">Dereham</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum4checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum4checkModal">
-                              <div class="text-wrapper">
-                                Museum of Norwich<p class="smaller-text">Norwich</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum5checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum5checkModal">
-                              <div class="text-wrapper">
-                                Elizabethan House<p class="smaller-text">Great Yarmouth</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum6checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum6check"Modal>
-                              <div class="text-wrapper">
-                                Strangers' Hall<p class="smaller-text">Norwich</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum7checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum7checkModal">
-                              <div class="text-wrapper">
-                                Lynn Museum<p class="smaller-text">King's Lynn</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum8checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum8checkModal">
-                              <div class="text-wrapper">
-                                Cromer Museum<p class="smaller-text">Cromer</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum9checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum9checkModal">
-                              <div class="text-wrapper">
-                                Tollhouse Gaol<p class="smaller-text">Great Yarmouth</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="museum10checkModal">
-                              <input type="checkbox" class="form-check-input" id="museum10checkModal">
-                              <div class="text-wrapper">
-                                Ancient House<p class="smaller-text">Thetford</p>
-                              </div>
-                            </label>
-                          </li>
+                    <form id="subjectModalForm">
+                      <div class="modal-header">
+                        <h3 class="modal-title" id="filterModalLabelSubject">Subject</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="filter-section">
+                          <ul class="section-list">
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject1checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Autism-friendly" id="subject1checkModal">
+                                <div class="text-wrapper">
+                                  Autism-friendly
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject2checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Baby and Toddlers" id="subject2checkModal">
+                                <div class="text-wrapper">
+                                  Baby and Toddlers
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject3checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Business & Enterprise" id="subject3checkModal">
+                                <div class="text-wrapper">
+                                  Business & Enterprise
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject4checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Crafting" id="subject4checkModal">
+                                <div class="text-wrapper">
+                                  Crafting
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject5checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Creativity" id="subject5checkModal">
+                                <div class="text-wrapper">
+                                  Creativity
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject6checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Cultural Activities" id="subject6checkModal">
+                                <div class="text-wrapper">
+                                  Cultural Activities
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject7checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Digital" id="subject7checkModal">
+                                <div class="text-wrapper">
+                                  Digital
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject8checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Family Fun" id="subject8checkModal">
+                                <div class="text-wrapper">
+                                  Family Fun
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject9checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Health and Wellbeing" id="subject9checkModal">
+                                <div class="text-wrapper">
+                                  Health and Wellbeing
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject10checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Heritage" id="subject10checkModal">
+                                <div class="text-wrapper">
+                                  Heritage
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject11checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Reading" id="subject11checkModal">
+                                <div class="text-wrapper">
+                                  Reading
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject12checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="SEND" id="subject12checkModal">
+                                <div class="text-wrapper">
+                                  SEND
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject13checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Skills and Training" id="subject13checkModal">
+                                <div class="text-wrapper">
+                                  Skills and Training
+                                </div>
+                              </label>
+                            </li>
+                            <li class="selection-item">
+                              <label class="form-check-label" for="subject14checkModal">
+                                <input type="checkbox" class="form-check-input" name="subjectModalOption" value="Young People" id="subject14checkModal">
+                                <div class="text-wrapper">
+                                  Young People
+                                </div>
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <ul class="dropdown-bottom-section">
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectModalOption)">Apply filters</button></li>
                         </ul>
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <ul class="dropdown-bottom-section">
-                        <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
-                        <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
-                      </ul>
-                    </div>
+                    </form>
                   </div>
                 </div>
-              </div>
+              </div> 
               <!-- Modal - Date -->
               <div class="modal fade" id="filterModalDate" tabindex="-1" aria-labelledby="filterModalLabelDate" aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title" id="filterModalLabelDate">Date range</h3>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="filter-section">
-                        <ul class="section-list">
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date1checkModal">
-                              <input type="checkbox" class="form-check-input" id="date1checkModal">
-                              <div class="text-wrapper">
-                                1900-present<p class="smaller-text">9546 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date2checkModal">
-                              <input type="checkbox" class="form-check-input" id="date2checkModal">
-                              <div class="text-wrapper">
-                                1800-1900<p class="smaller-text">9322 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">  
-                            <label class="form-check-label" for="date3checkModal">
-                              <input type="checkbox" class="form-check-input" id="date3checkModal">
-                              <div class="text-wrapper">
-                                1700-1800<p class="smaller-text">6102 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date4checkModal">
-                              <input type="checkbox" class="form-check-input" id="date4checkModal">
-                              <div class="text-wrapper">
-                                1500-1700<p class="smaller-text">4125 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date5checkModal">
-                              <input type="checkbox" class="form-check-input" id="date5checkModal">
-                              <div class="text-wrapper">
-                                1200-1500<p class="smaller-text">2679 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date6checkModal">
-                              <input type="checkbox" class="form-check-input" id="date6checkModal">
-                              <div class="text-wrapper">
-                                1000-1200<p class="smaller-text">1884 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date7checkModal">
-                              <input type="checkbox" class="form-check-input" id="date7checkModal">
-                              <div class="text-wrapper">
-                                500-1000<p class="smaller-text">124 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date8checkModal">
-                              <input type="checkbox" class="form-check-input" id="date8checkModal">
-                              <div class="text-wrapper">
-                                0-500<p class="smaller-text">1212 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date9checkModal">
-                              <input type="checkbox" class="form-check-input" id="date9checkModal">
-                              <div class="text-wrapper">
-                                2000-0 BCE.<p class="smaller-text">245 records</p>
-                              </div>
-                            </label>
-                          </li>
-                          <li class="selection-item">
-                            <label class="form-check-label" for="date10checkModal">
-                              <input type="checkbox" class="form-check-input" id="date10checkModal">
-                              <div class="text-wrapper">
-                                8000-2000 BCE.<p class="smaller-text">5522 records</p>
-                              </div>
-                            </label>
-                          </li>
+                    <form id="dateModalForm">
+                      <div class="modal-header">
+                        <h3 class="modal-title" id="filterModalLabelDate">Date range</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close filters"></button>
+                      </div>
+                      <div class="modal-body">
+                        (date picker goes here)
+                      </div>
+                      <div class="modal-footer">
+                        <ul class="dropdown-bottom-section">
+                          <li><button class="filter-control-btn clear-filters" type="button" onclick="">Clear filters</button></li>
+                          <li><button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button></li>
                         </ul>
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <ul class="dropdown-bottom-section">
-                        <li><a class="filter-control-btn clear-filter" href="#">Clear filters</a></li>
-                        <li><button class="filter-control-btn apply-filter" type="button">Apply filters</button></li>
-                      </ul>
-                    </div>
+                    </form>
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
             <hr class="ncc-hr">
             <div class="row {{rowDefaults}}">
@@ -819,42 +729,76 @@
     <script>
 
       let numberOfLocations = 0;
+      let numberOfSubjects = 0;
 
       window.onload = function() {
         let locations = getCookie('locationsList');
+        let subjects = getCookie('subjectsList');
 
         if (locations === '') {
-          console.log(`cookie empty, returning`);
-          return;
-        }
-        let locationsArray = locations.split(",");
-        console.log(`cookie contents= ${locations}`);
+          console.log(`locations cookie empty, returning`);
+        } else {
+          let locationsArray = locations.split(",");
+          console.log(`cookie contents= ${locations}`);
 
-        let locationsForm = document.getElementById("locationDropdownForm");
-        let locationsModalForm = document.getElementById("locationModalForm");
+          let locationsForm = document.getElementById("locationDropdownForm");
+          let locationsModalForm = document.getElementById("locationModalForm");
 
-        for (var i = 0; i < locationsForm.length; i++) {
-          console.log(`checkbox ${i} = ${locationsForm[i].value}`);
-          if (locationsForm[i].value)
-          numberOfLocations++;
-        }
+          for (var i = 0; i < locationsForm.length; i++) {
+            console.log(`checkbox ${i} = ${locationsForm[i].value}`);
+            if (locationsForm[i].value)
+            numberOfLocations++;
+          }
 
-        let checkedLocations = [];
+          let checkedLocations = [];
 
-        for (i = 0; i < locationsArray.length; i++) {
-          console.log(`analysing option ${locationsArray[i]}`);
-          for (j = 0; j < locationsForm.length; j++) {
-            if (locationsForm[j].value == locationsArray[i]) {
-              console.log(`input value ${locationsForm[j].value} == ${locationsArray[i]}, checked`);
-              locationsForm[j].checked = true;
-              locationsModalForm[j-1].checked = true; // no idea why this is the case, will revist
-              checkedLocations.push(locationsArray[i]);
+          for (i = 0; i < locationsArray.length; i++) {
+            console.log(`analysing option ${locationsArray[i]}`);
+            for (j = 0; j < locationsForm.length; j++) {
+              if (locationsForm[j].value == locationsArray[i]) {
+                console.log(`input value ${locationsForm[j].value} == ${locationsArray[i]}, checked`);
+                locationsForm[j].checked = true;
+                locationsModalForm[j-1].checked = true; // no idea why this is the case, will revist
+                checkedLocations.push(locationsArray[i]);
+              }
             }
           }
-         // addReasonDiv(reasolocationsArraynsArray[i]);
+
+          updateLocationBtn(checkedLocations);
         }
 
-        updateLocationBtn(checkedLocations);
+        if (subjects === '') {
+          console.log(`subjects cookie empty, returning`);
+        } else {
+          let subjectsArray = subjects.split(",");
+          console.log(`cookie contents= ${subjects}`);
+
+          let subjectsForm = document.getElementById("subjectDropdownForm");
+          let subjectsModalForm = document.getElementById("subjectModalForm");
+
+          for (var i = 0; i < subjectsForm.length; i++) {
+            console.log(`checkbox ${i} = ${subjectsForm[i].value}`);
+            if (subjectsForm[i].value)
+            numberOfSubjects++;
+          }
+
+          let checkedSubjects = [];
+
+          for (i = 0; i < subjectsArray.length; i++) {
+            console.log(`analysing option ${subjectsArray[i]}`);
+            for (j = 0; j < subjectsForm.length; j++) {
+              if (subjectsForm[j].value == subjectsArray[i]) {
+                console.log(`input value ${subjectsForm[j].value} == ${subjectsArray[i]}, checked`);
+                subjectsForm[j].checked = true;
+                subjectsModalForm[j-1].checked = true;
+                checkedSubjects.push(subjectsArray[i]);
+              }
+            }
+          }
+
+          updateSubjectBtn(checkedSubjects);
+        }
+        
       }
 
       function updateLocationBtn(locationsArray) {
@@ -877,8 +821,28 @@
           modalButton.innerHTML = `Location`;
         }
       }
+      function updateSubjectBtn(subjectsArray) {
+        let dropdownButton = document.getElementById("dropdownMenuSubject");
+        let modalButton = document.getElementById("filterModalSubjectButton");
 
-      function applyFilters(locations) {
+        console.log(`CHECKED SUBJECTS = ${subjectsArray}`);
+
+        if (subjectsArray.length > 1) {
+          console.log(`MORE THAN one subject, setting button text to = ${subjectsArray.length}`);
+          dropdownButton.innerHTML = `Subject • ${subjectsArray.length}`;
+          modalButton.innerHTML = `Subject • ${subjectsArray.length}`;
+        } else if (subjectsArray.length == 1) {
+          console.log(`one subject, setting button text to = ${subjectsArray[0]}`);
+          dropdownButton.innerHTML = `${subjectsArray[0]}`;
+          modalButton.innerHTML = `${subjectsArray[0]}`;
+        } else {
+          console.log(`other, setting button text to = Subject`);
+          dropdownButton.innerHTML = `Subject`;
+          modalButton.innerHTML = `Subject`;
+        }
+      }
+
+      function applyFiltersLocation(locations) {
         let locationsList = [];
 
         for (var i = 0; i < locations.length; i++) {
@@ -893,6 +857,42 @@
 
         let hour = 1/24;
         setCookie('locationsList', locationsList, hour);
+
+        window.location.href = "{{ '/libraries-events-search' | url }}";
+      }
+
+      function applyFiltersSubject(subjects) {
+        let subjectsList = [];
+
+        for (var i = 0; i < subjects.length; i++) {
+          if (subjects[i].checked) {
+            text = subjects[i].value;
+            subjectsList.push(text);
+            console.log(`added subject ${text}`);
+          }
+        }
+
+        console.log(`list of subjects= ${subjectsList}`);
+
+        let hour = 1/24;
+        setCookie('subjectsList', subjectsList, hour);
+
+        window.location.href = "{{ '/libraries-events-search' | url }}";
+      }
+      
+      function clearFiltersLocation() {
+        let locationsList = [];
+
+        let hour = 1/24;
+        setCookie('locationsList', locationsList, hour);
+
+        window.location.href = "{{ '/libraries-events-search' | url }}";
+      }
+      function clearFiltersSubject() {
+        let subjectsList = [];
+
+        let hour = 1/24;
+        setCookie('subjectsList', subjectsList, hour);
 
         window.location.href = "{{ '/libraries-events-search' | url }}";
       }
