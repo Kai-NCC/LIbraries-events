@@ -11814,6 +11814,36 @@ section.section_stage_theme .lead {
   margin-right: 5px;
 }
 
+.pagination.libraries-pagination .page-item .page-link {
+  color: black;
+  font-weight: 600;
+}
+.pagination.libraries-pagination .page-item.disabled .page-link {
+  color: #6c757d;
+  font-weight: 400;
+}
+.pagination.libraries-pagination .page-item.active .page-link {
+  border-color: #006666;
+  background-color: #006666;
+  transition: none;
+  color: white;
+}
+.pagination.libraries-pagination .page-item .page-link:focus, .pagination.libraries-pagination .page-item.active .page-link:focus {
+  box-shadow: none;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  transition: none;
+}
+.pagination.libraries-pagination .page-item .page-link:focus:focus-visible, .pagination.libraries-pagination .page-item.active .page-link:focus:focus-visible {
+  box-shadow: none;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  transition: none;
+}
+.pagination.libraries-pagination .page-item .page-link:focus:not(:focus-visible), .pagination.libraries-pagination .page-item.active .page-link:focus:not(:focus-visible) {
+  outline: auto;
+}
+
 .form-check {
   display: flex;
   align-items: center;
