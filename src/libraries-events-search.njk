@@ -24,9 +24,10 @@
       <div class="row {{rowDefaults}}">
         <div class="col-12">
           <h1 class="h2">Libraries events search</h1>
-          <div class="search-wrapper mt-4">
-            <form class="form-inline d-flex libraries-search-area" action="{{ '/' | url }}">
-              <input class="form-control" type="search" placeholder="Search events" aria-label="Search">
+          <p class="text-muted mt-4 mb-2">Enter keywords to search libraries events</p>
+          <div class="search-wrapper my-0">
+            <form class="form-inline d-flex libraries-search-area" role="search" action="{{ '/' | url }}">
+              <input class="form-control" type="search" placeholder="" aria-label="Search">
               <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="submit">Find events</button>
             </form>
           </div>

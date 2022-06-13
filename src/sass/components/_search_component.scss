@@ -286,10 +286,6 @@
     width: 50%;
     margin: 0;
 
-    &:hover {
-      // background-color: $gray-800;
-      // color: white;
-    }
     &:focus-within {
       color: $focus-text-colour;
       background-color: $focus-colour;
