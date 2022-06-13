@@ -551,3 +551,37 @@
     margin-right: 5px;
   }
 }
+
+.pagination.libraries-pagination {
+  .page-item .page-link {
+    color: black;
+    font-weight: 600;
+  }
+  .page-item.disabled .page-link {
+    color: $gray-600;
+    font-weight: 400;
+  }
+  .page-item.active .page-link {
+    border-color: #006666;
+    background-color: #006666;
+    transition: none;
+    color: white;
+  }
+  .page-item .page-link, .page-item.active .page-link {
+    &:focus {
+      box-shadow: none;
+      background-color: $focus-colour;
+      color: $focus-text-colour;
+      transition: none;
+    }
+    &:focus:focus-visible {
+      box-shadow: none;
+      background-color: $focus-colour;
+      color: $focus-text-colour;
+      transition: none;
+    }
+    &:focus:not(:focus-visible) {
+      outline: auto;
+    }
+  }
+}
