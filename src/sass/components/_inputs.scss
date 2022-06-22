@@ -1,37 +1,44 @@
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  label {
-    margin-left: 10px;
-    font-size: 1.125rem;
-    font-weight: 500;
-  }
-  input[type=checkbox] {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    border: solid $dark 2px;
-    border-radius: 0;
-    @include media-breakpoint-down(md) {
-      width: 30px !important;
-      height: 30px !important;
-      min-width: 30px !important;
-      min-height: 30px !important;
-    }
-    &:focus, &:focus-visible {
-      box-shadow: none;
-      outline: solid 5px $focus-colour;
-      border: solid $focus-text-colour 5px;
-      border-radius: 0;
-      outline-offset: 0;
-      // background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.95' fill='50505'/%3e%3c/svg%3e");
-    }
-    &:active {
-      filter: none;
-    }
-  }
+// .form-check {
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 10px;
+//   border-radius: 0px;
+//   label {
+//     margin-left: 10px;
+//     font-size: 1.125rem;
+//     font-weight: 500;
+//   }
+//   input[type=checkbox] {
+//     width: 44px !important;
+//     height: 44px !important;
+//     min-width: 44px !important;
+//     min-height: 44px !important;
+//     border: solid $dark 2px;
+//     border-radius: 0 !important;
+//     @include media-breakpoint-down(md) {
+//       width: 30px !important;
+//       height: 30px !important;
+//       min-width: 30px !important;
+//       min-height: 30px !important;
+//     }
+//     &:focus, &:focus-visible {
+//       box-shadow: none;
+//       outline: solid 5px $focus-colour;
+//       border: solid $focus-text-colour 5px;
+//       border-radius: 0;
+//       outline-offset: 0;
+//       // background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.95' fill='50505'/%3e%3c/svg%3e");
+//     }
+//     &:active {
+//       filter: none;
+//     }
+//   }
+// }
+input[type="checkbox" i]:focus-visible {
+  outline-offset: 0px;
+}
+.form-check-input[type=checkbox] {
+  border-radius: 0px;
 }
 .form-check.radio-form {
   display: flex;
