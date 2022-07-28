@@ -1,4 +1,4 @@
-// Main Norfolk styling 
+// Main Norfolk styling
 
 header {
   background-color: white;
@@ -12,10 +12,10 @@ header {
     .skip-to {
       font-weight: bold;
       border: none;
-      height: 1px; 
-      width: 1px; 
+      height: 1px;
+      width: 1px;
       overflow: hidden;
-      clip: rect(1px,1px,1px,1px);
+      clip: rect(1px, 1px, 1px, 1px);
       padding: 0;
       position: absolute;
     }
@@ -24,8 +24,8 @@ header {
       color: $focus-text-colour;
       outline: none;
       border: none;
-      height: auto; 
-      width: 100%; 
+      height: auto;
+      width: 100%;
       overflow: visible;
       position: static;
       padding: 15px;
@@ -36,7 +36,7 @@ header {
   .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     @include media-breakpoint-down(md) {
       flex-direction: column;
     }
@@ -57,7 +57,7 @@ header {
       color: $dark;
       max-width: 175px;
       min-width: 140px;
-      padding: 8px;  
+      padding: 8px;
       &:focus {
         color: $focus-text-colour;
         background-color: $focus-colour;
@@ -86,7 +86,7 @@ header {
             color: $dark;
             font-size: 1.125rem;
             font-weight: 700 !important;
-            padding: 8px 0px;            
+            padding: 8px 0px;
             &:hover {
               color: black;
             }
@@ -123,8 +123,8 @@ header {
       margin: 10px 0 10px 0;
       position: relative;
     }
-    input { 
-      border: solid silver 1px;
+    input {
+      border: solid black 2px;
       border-radius: 5px 0px 0px 5px;
       min-width: 275px;
       @include media-breakpoint-down(sm) {
@@ -132,10 +132,11 @@ header {
       }
       &:focus {
         transition: none;
-        border-color: $focus-colour;
         outline: solid 4px $focus-colour;
+        border: solid black 2px;
+        outline-offset: -6px;
         box-shadow: none;
-      } 
+      }
     }
     button {
       background-color: #006666;
@@ -151,7 +152,7 @@ header {
       }
       &:hover {
         color: white;
-        background-color: $dark; 
+        background-color: $dark;
       }
       &:focus {
         transition: none;
@@ -163,7 +164,7 @@ header {
         path {
           fill: $focus-text-colour;
         }
-      } 
+      }
       &:active:focus {
         box-shadow: none;
       }

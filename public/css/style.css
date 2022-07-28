@@ -11010,7 +11010,7 @@ header .main-search-area {
   }
 }
 header .main-search-area input {
-  border: solid silver 1px;
+  border: solid black 2px;
   border-radius: 5px 0px 0px 5px;
   min-width: 275px;
 }
@@ -11021,8 +11021,9 @@ header .main-search-area input {
 }
 header .main-search-area input:focus {
   transition: none;
-  border-color: #ffdd00;
   outline: solid 4px #ffdd00;
+  border: solid black 2px;
+  outline-offset: -6px;
   box-shadow: none;
 }
 header .main-search-area button {
