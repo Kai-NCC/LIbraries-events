@@ -705,7 +705,7 @@
               </div> 
             </div>
             <hr class="ncc-hr">
-            <div class="row {{rowDefaults}}">
+            <div class="row {{rowDefaults}}" id="page-1">
               <div class="col-12 col-sm-6 col-lg-4">
                 {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
               </div>
@@ -715,6 +715,19 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022 • 4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
               </div>
+            </div>
+            <div class="row {{rowDefaults}}" id="page-2">
+              <div class="col-12 col-sm-6 col-lg-4">
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022 • 4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+              </div>
+            </div>
+            <div class="row {{rowDefaults}}" id="page-3">
               <div class="col-12 col-sm-6 col-lg-4">
                 {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
               </div>
@@ -722,12 +735,46 @@
                 {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
               </div>
             </div>
+
+            <nav aria-label="Acle library events pagination" style="float: left"> 
+            <ul class="pagination libraries-pagination">
+              <li id="page-prev-link" class="page-item disabled">
+                <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
+              </li>
+              <li id="page1-link" class="page-item active">
+                <button class="page-link" onclick="showPage(1)">1</button>
+              </li>
+              <li id="page2-link" class="page-item">
+                <button class="page-link" onclick="showPage(2)">2</button>
+              </li>
+              <li id="page3-link" class="page-item">
+                <button class="page-link" onclick="showPage(3)">3</button>
+              </li>
+              <li id="page-next-link" class="page-item">
+                <button class="page-link" onclick="nextPage()">Next</button>
+              </li>
+            </ul>
+          </nav>
+
           </div>
         </div>
       </div>
     </div>
 
     <script>
+
+      let currentPage = 1;
+
+      const page1 = document.getElementById("page-1");
+      const page2 = document.getElementById("page-2");
+      const page3 = document.getElementById("page-3");
+
+      const link1 = document.getElementById("page1-link");
+      const link2 = document.getElementById("page2-link");
+      const link3 = document.getElementById("page3-link");
+
+      const linkPrev = document.getElementById("page-prev-link");
+      const linkNext = document.getElementById("page-next-link");
 
       let numberOfLocations = 0;
       let numberOfSubjects = 0;
@@ -766,6 +813,10 @@
           }
 
           updateLocationBtn(checkedLocations);
+
+          let currentPage = 1;
+          page2.style.display = "none";
+          page3.style.display = "none";
         }
 
         if (subjects === '') {
@@ -919,6 +970,77 @@
           }
         }
         return "";
+      }
+
+      function nextPage() {
+        if (currentPage >= 3) return;
+        showPage(currentPage + 1);
+      }
+
+      function prevPage() {
+        if (currentPage <= 1) return;
+        showPage(currentPage - 1);
+      }
+
+      function showPage(pageNum) {
+        
+        if (pageNum == 1) {
+          page1.style.display = "flex";
+          page2.style.display = "none";
+          page3.style.display = "none";
+
+          link1.classList.add("active");
+          link2.classList.remove("active");
+          link3.classList.remove("active");
+
+          linkPrev.classList.add("disabled");
+          linkPrev.firstElementChild.tabIndex="-1";
+          linkNext.classList.remove("disabled");
+          linkNext.firstElementChild.tabIndex="0";
+          currentPage = 1;
+
+          page1.getElementsByTagName('a')[0].focus();
+
+          page1.scrollIntoView();
+        } else if (pageNum == 2) {
+          page1.style.display = "none";
+          page2.style.display = "flex";
+          page3.style.display = "none";
+
+          link1.classList.remove("active");
+          link2.classList.add("active");
+          link3.classList.remove("active");
+
+          linkPrev.classList.remove("disabled");
+          linkPrev.firstElementChild.tabIndex="0";
+          linkNext.classList.remove("disabled");
+          linkNext.firstElementChild.tabIndex="0";
+          currentPage = 2;
+
+          page2.getElementsByTagName('a')[0].focus();
+
+          page2.scrollIntoView();
+        } else if (pageNum == 3) {
+          page1.style.display = "none";
+          page2.style.display = "none";
+          page3.style.display = "flex";
+
+          link1.classList.remove("active");
+          link2.classList.remove("active");
+          link3.classList.add("active");
+
+          linkPrev.classList.remove("disabled");
+          linkPrev.firstElementChild.tabIndex="0";
+          linkNext.classList.add("disabled");
+          linkNext.firstElementChild.tabIndex="-1";
+          currentPage = 3;
+
+          page3.getElementsByTagName('a')[0].focus();
+
+          page3.scrollIntoView();
+        } else {
+          console.log("pagination error");
+        }
       }
 
     </script>

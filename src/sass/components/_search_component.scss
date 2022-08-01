@@ -609,3 +609,12 @@
     }
   }
 }
+
+.pagination.libraries-pagination
+  .page-item
+  .page-link:focus:not(:focus-visible),
+.pagination.libraries-pagination
+  .page-item.active
+  .page-link:focus:not(:focus-visible) {
+  outline: solid $focus-text-colour 2px;
+}

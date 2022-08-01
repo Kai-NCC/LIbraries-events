@@ -11839,6 +11839,11 @@ section.section_stage_theme .lead {
   outline: auto;
 }
 
+.pagination.libraries-pagination .page-item .page-link:focus:not(:focus-visible),
+.pagination.libraries-pagination .page-item.active .page-link:focus:not(:focus-visible) {
+  outline: solid #0b0c0c 2px;
+}
+
 input[type=checkbox i]:focus-visible {
   outline-offset: 0px;
 }
