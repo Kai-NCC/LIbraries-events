@@ -187,3 +187,7 @@ p code {
 button:focus:not(:focus-visible) {
   outline: solid $focus-text-colour 2px;
 }
+.btn-check:focus + .btn,
+.btn:focus {
+  outline: solid $focus-text-colour 2px;
+}

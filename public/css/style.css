@@ -12648,4 +12648,9 @@ button:focus:not(:focus-visible) {
   outline: solid #0b0c0c 2px;
 }
 
+.btn-check:focus + .btn,
+.btn:focus {
+  outline: solid #0b0c0c 2px;
+}
+
 /*# sourceMappingURL=style.css.map */
