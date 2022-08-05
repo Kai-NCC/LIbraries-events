@@ -33,6 +33,7 @@
           </div>
           <div class="row {{rowDefaults}}">
             <div class="search-component">
+              <h2 class="mt-2 mb-0">Search filters</h2>
               <div class="search-settings">
                 <div class="filters">
                   <form id="locationDropdownForm">
@@ -205,10 +206,10 @@
                             </div>
                           </label>
                         </li>
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationOption)">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationOption)">Apply filters</button>
+                        </div>
                       </ul>
                     </div>
                   </form>
@@ -333,10 +334,10 @@
                             </div>
                           </label>
                         </li>
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectOption)">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectOption)">Apply filters</button>
+                        </div>
                       </ul>
                     </div>
                   </form>
@@ -350,10 +351,10 @@
                       </button>
                       <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
                         (Date picker goes here)
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="S()">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="S()">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button>
+                        </div>
                       </ul>
                     </div>
                   </form>
@@ -535,10 +536,10 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationModalOption)">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersLocation()">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersLocation(this.form.locationModalOption)">Apply filters</button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -672,10 +673,10 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectModalOption)">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectModalOption)">Apply filters</button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -694,10 +695,10 @@
                         (date picker goes here)
                       </div>
                       <div class="modal-footer">
-                        <ul class="dropdown-bottom-section">
-                          <li><button class="filter-control-btn clear-filters" type="button" onclick="">Clear filters</button></li>
-                          <li><button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button></li>
-                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -705,34 +706,35 @@
               </div> 
             </div>
             <hr class="ncc-hr">
+            <h2 class="m0">Search results</h2>
             <div class="row {{rowDefaults}}" id="page-1">
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
               </div>
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
               </div>
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022 • 4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022', '4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
               </div>
             </div>
             <div class="row {{rowDefaults}}" id="page-2" style="display: none;">
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
               </div>
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022 • 4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022', '4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
               </div>
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
               </div>
             </div>
             <div class="row {{rowDefaults}}" id="page-3" style="display: none;">
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022 • 2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
               </div>
               <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022 • 2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
               </div>
             </div>
 

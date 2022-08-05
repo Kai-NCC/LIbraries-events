@@ -1,10 +1,10 @@
-{% macro generalcard(title, location, date, flair, extra, text, img, link, options) %}
+{% macro generalcard(title, location, date, time, flair, extra, text, img, link, options) %}
 
 <div class="card {{options}} h-100 {% if title|length %}{% else %}nohover{% endif %}" data-component="72">
 
   {% if img|length %}
   <div class="img-wrapper ratio ratio-16x9">
-    <img src="/Libraries-events/public/img/{{img}}" class="card-img-top" alt="image for {{title}}">
+    <img src="/Libraries-events/public/img/{{img}}" class="card-img-top" alt="">
   </div>
   {% else %}{% endif %}
 
@@ -15,11 +15,11 @@
     {% else %}{% endif %}
 
     {% if date|length %}
-    <p class="card-date">{{ date }}</p>
+    <p class="card-date">{{ date }} • {{time}}</p>
     {% else %}{% endif %}
 
     {% if title|length %}
-    <h3 class="card-title h3"><a class="stretched-link" href="/Libraries-events/public/{{link}}">{{ title }}</a></h3>
+    <h3 class="card-title h3"><a class="stretched-link" aria-label="{{title}} on {{date}} at {{time}}" href="/Libraries-events/public/{{link}}">{{ title }}</a></h3>
     {% else %}{% endif %}
 
     {% if flair|length %}
