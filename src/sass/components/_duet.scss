@@ -1,0 +1,47 @@
+.duet-date__input-wrapper {
+  input {
+    border-radius: 10px;
+  }
+}
+
+.duet-date__input {
+  padding: 6px 50px 6px 10px;
+  height: 46px;
+  border-width: 2px;
+  &:focus {
+    outline: solid $focus-text-colour 2px;
+    box-shadow: none;
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    border-color: $focus-text-colour;
+    &::placeholder {
+      color: $focus-text-colour;
+      opacity: 1;
+    }
+  }
+  &:focus:not(:focus-visible) {
+    outline: solid $focus-text-colour 2px;
+    background-color: $focus-colour;
+    color: $focus-text-colour;
+    border-color: $focus-text-colour;
+    &::placeholder {
+      color: $focus-text-colour;
+      opacity: 1;
+    }
+  }
+}
+
+.duet-date__toggle {
+  border: solid 0px black;
+  border-radius: 0px 8px 8px 0px;
+  right: 2px;
+  top: 2px;
+  height: calc(100% - 4px);
+  &:focus {
+    outline: solid $focus-colour 2px;
+    box-shadow: none;
+  }
+  &:focus:not(:focus-visible) {
+    outline: solid $focus-colour 2px;
+  }
+}

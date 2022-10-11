@@ -343,19 +343,19 @@
                   </form>
                   <form id="dateDropdownForm">
                     <div id="toggleDate" class="dropdown">
-                      <button class="dropdown-btn btn btn-outline-dark" type="button" id="dropdownMenuDate" data-bs-toggle="dropdown" aria-expanded="false"  data-bs-auto-close="outside">
+                      <div class="duet-wrapper">
+                        <duet-date-picker id="date" identifier="date" min="2022-01-01" max="2022-12-31"></duet-date-picker>
+                      </div>
+                      {# <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDateButton" data-bs-toggle="modal" data-bs-target="#filterModalDate" aria-expanded="false"  data-bs-auto-close="outside">
                         Date range
-                      </button>
-                      <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalDateButton" data-bs-toggle="modal" data-bs-target="#filterModalDate" aria-expanded="false"  data-bs-auto-close="outside">
-                        Date range
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
+                      </button> #}
+                      {# <ul class="dropdown-menu" aria-labelledby="dropdownMenuDate">
                         (Date picker goes here)
                         <div class="dropdown-bottom-section">
                           <button class="filter-control-btn clear-filters" type="button" onclick="S()">Clear filters</button>
                           <button class="filter-control-btn apply-filter" type="button" onclick="">Apply filters</button>
                         </div>
-                      </ul>
+                      </ul> #}
                     </div>
                   </form>
                 </div>
