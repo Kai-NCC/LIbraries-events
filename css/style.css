@@ -12462,6 +12462,52 @@ button:focus:not(:focus-visible) {
   border-color: #0b0c0c;
 }
 
+.duet-date__input-wrapper input {
+  border-radius: 10px;
+}
+
+.duet-date__input {
+  padding: 6px 50px 6px 10px;
+  height: 46px;
+  border-width: 2px;
+}
+.duet-date__input:focus {
+  outline: solid #0b0c0c 2px;
+  box-shadow: none;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  border-color: #0b0c0c;
+}
+.duet-date__input:focus::placeholder {
+  color: #0b0c0c;
+  opacity: 1;
+}
+.duet-date__input:focus:not(:focus-visible) {
+  outline: solid #0b0c0c 2px;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  border-color: #0b0c0c;
+}
+.duet-date__input:focus:not(:focus-visible)::placeholder {
+  color: #0b0c0c;
+  opacity: 1;
+}
+
+.duet-date__toggle {
+  border: solid 0px black;
+  border-radius: 0px 8px 8px 0px;
+  right: 2px;
+  top: 2px;
+  height: calc(100% - 4px);
+}
+.duet-date__toggle:focus {
+  outline: solid #ffdd00 2px;
+  box-shadow: none;
+}
+.duet-date__toggle:focus:not(:focus-visible) {
+  outline: solid #ffdd00 2px;
+}
+
 html {
   height: 100%;
 }
