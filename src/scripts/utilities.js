@@ -1,3 +1,22 @@
+/*** notes on code structure ****************************************
+ * 
+ * seperate functionality for pagination and filters
+ * 
+ * have cookie functions in utilities file
+ * 
+ * filters+search select events - events list passed to pagination function
+ * - pagination function presents events and computes number of pages
+ * 
+ * pagination function must create prev/next/number buttons on demand
+ * 
+ * number of events (n), maximum number of events per page (e),
+ * resulting number of pages (p)
+ * 
+ * p = ceil(n / e)
+ *
+********************************************************************/
+
+
 let currentPage = 1;
 
 const page1 = document.getElementById("page-1");
