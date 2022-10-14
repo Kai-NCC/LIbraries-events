@@ -94,6 +94,9 @@ const generateLink = function(n) {
 
 // Iteratively generate the given number of page links
 const generatePageLinks = function(pageNum) {
+
+  if (pageNum < 2) return;
+
   PAGE_LINKS.insertAdjacentHTML('beforeend',
   `<li id="page-prev-link" class="page-item disabled">
     <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
