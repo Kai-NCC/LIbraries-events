@@ -1,6 +1,12 @@
-{% macro generalcard(title, location, date, time, flair, extra, text, img, link, options) %}
+{% macro generalcard(title, location, date, time, flair, extra, text, img, link, options, month, day, id) %}
 
 <div class="card {{options}} h-100 {% if title|length %}{% else %}nohover{% endif %}" data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-{{id}}-month" class="month">{{month}}</div>
+    <div aria-hidden="true" id="result-{{id}}-day" class="day">{{day}}</div>
+  </div>
+  <div aria-hidden="true" id="result-{{id}}-type" class="type">{{type}}</div>
 
   {% if img|length %}
   <div class="img-wrapper ratio ratio-16x9">
@@ -10,17 +16,18 @@
 
   <div class="card-body">
 
+    {% if title|length %}
+    <h3 id="result-{{id}}-title" class="card-title h3"><a class="stretched-link" aria-label="{{title}} on {{month}} {{day}} at {{time}}" href="/Libraries-events/public/{{link}}">{{ title }}</a></h3>
+    {% else %}{% endif %}
+
     {% if location|length %}
-    <p class="card-location">{{ location }}</p>
+    <p id="result-{{id}}-location" class="card-location">{{ location }}</p>
     {% else %}{% endif %}
 
     {% if date|length %}
     <p class="card-date">{{ date }} • {{time}}</p>
     {% else %}{% endif %}
 
-    {% if title|length %}
-    <h3 class="card-title h3"><a class="stretched-link" aria-label="{{title}} on {{date}} at {{time}}" href="/Libraries-events/public/{{link}}">{{ title }}</a></h3>
-    {% else %}{% endif %}
 
     {% if flair|length %}
     <span class="flair flair-full">{{ flair }}</span>
@@ -31,7 +38,7 @@
     {% else %}{% endif %}
 
     {% if text|length %}
-    <p class="card-text">{{ text }}</p>
+    <p id="result-{{id}}-desc" class="card-text">{{ text }}</p>
     {% else %}{% endif %}
 
   </div>

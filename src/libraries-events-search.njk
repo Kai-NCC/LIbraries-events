@@ -706,57 +706,44 @@
               </div> 
             </div>
             <hr class="ncc-hr">
-            <h2 class="m0">Search results</h2>
-            <div class="row {{rowDefaults}}" id="page-1">
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+            <h2 id="search-indicator" class="m0"></h3>
+            <h3 id="multi-filter-indicator" class="m0"></h3>
+            <h2 id="result-number-indicator" class="h3" aria-live="polite"></h2>
+            <div class="row {{rowDefaults}}" id="page-content">
+              <div class="col-12 col-sm-6 col-lg-4" id="result-1-wrapper">
+                {{ generalcard.generalcard('Craft Group', 'Acle • Acle Library', '18 October 2022', '2pm', 'Free', '1 session • places available', 'Bring along your own craft activities and meet with other people to create and chat.', '', '/', 'card-light  library-event-card', 'October', '18', '1') }}
               </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-2-wrapper">
+                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '25 October 2022', '2pm', 'Free', '1 session • places available', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light  library-event-card', 'October', '25', '2') }}
               </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022', '4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-3-wrapper">
+                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '25 October 2022', '4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light  library-event-card', 'October', '25', '3') }}
               </div>
-            </div>
-            <div class="row {{rowDefaults}}" id="page-2" style="display: none;">
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-4-wrapper">
+                {{ generalcard.generalcard('Just a Cuppa', 'Diss • Diss Library', '20 October 2022', '10am', 'Free', '1 session • places available', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light  library-event-card', 'October', '20', '4') }}
               </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Lego Club', 'Acle • Acle Library', '10 June 2022', '4pm', 'Free', '1 session • places available', 'Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-5-wrapper">
+                {{ generalcard.generalcard('Bounce and Rhyme', 'Diss • Diss Library', '20 October 2022', '10am', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light  library-event-card', 'October', '20', '5') }}
               </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-6-wrapper">
+                {{ generalcard.generalcard('STEAMLAB', 'Downham Market • Downham Market Library', '13 October 2022', '4pm', 'Free', '1 session • few spaces left', 'Science, Technology and Fun.', '', '/', 'card-light  library-event-card', 'October', '13', '6') }}
               </div>
-            </div>
-            <div class="row {{rowDefaults}}" id="page-3" style="display: none;">
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Just a Cuppa', 'Acle • Acle Library', '07 June 2022', '2pm', 'Free', '1 session • few spaces left', 'Fancy making some new friends, or just to have a good old chat?', '', '/', 'card-light') }}
+              <div class="col-12 col-sm-6 col-lg-4" id="result-7-wrapper">
+                {{ generalcard.generalcard('Board Games for Adults', 'Downham Market • Downham Market Library', '08 November 2022', '2pm', 'Free', '1 session • places available', 'Science, Technology and Fun.', '', '/', 'card-light  library-event-card', 'November', '8', '7') }}
               </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                {{ generalcard.generalcard('Bounce and Rhyme', 'Acle • Acle Library', '09 June 2022', '2:15pm', 'Free', '1 session • places available', 'Songs and rhymes for babies, toddlers and their parents and carers.', '', '/', 'card-light') }}
-              </div>
+              
             </div>
 
             <nav aria-label="Acle library events pagination" style="float: left"> 
-            <ul class="pagination libraries-pagination">
-              <li id="page-prev-link" class="page-item disabled">
-                <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
-              </li>
-              <li id="page1-link" class="page-item active">
-                <button class="page-link" onclick="showPage(1)">1</button>
-              </li>
-              <li id="page2-link" class="page-item">
-                <button class="page-link" onclick="showPage(2)">2</button>
-              </li>
-              <li id="page3-link" class="page-item">
-                <button class="page-link" onclick="showPage(3)">3</button>
-              </li>
-              <li id="page-next-link" class="page-item">
-                <button class="page-link" onclick="nextPage()">Next</button>
-              </li>
-            </ul>
-          </nav>
+              <ul id="libraries-pagination-list" class="pagination libraries-pagination">
+                <li id="page-prev-link" class="page-item disabled">
+                  <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
+                </li>
+                <li id="page-next-link" class="page-item">
+                  <button class="page-link" onclick="nextPage()">Next</button>
+                </li>
+              </ul>
+            </nav>
 
           </div>
         </div>
