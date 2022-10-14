@@ -36,6 +36,10 @@ const MAX_EVENTS_PER_PAGE = 6;
 window.onload = function() {
   console.log('test');
   calculatePageCount();
+
+  // for pagination testing
+  const allEvents = document.querySelectorAll('.single-event-container');
+  displayEvents(allEvents, 1);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -79,8 +83,15 @@ const calculatePageCount = function() {
   generatePageLinks(numPages);
 }
 
-const displayEvents = function() {
-
+// Determines which results to display based on page number
+const displayEvents = function(events, page) {
+  console.log(events);
+  for (i = 0; i < events.length; i++) {
+    events[i].style.display = 'none';
+    if (i < MAX_EVENTS_PER_PAGE * page) {
+      events[i].style.display = 'block';
+    }
+  }
 }
 
 // Takes the relevant number, returns the final element markup for a single link
