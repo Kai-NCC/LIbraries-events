@@ -13,6 +13,13 @@
  * resulting number of pages (p)
  * 
  * p = ceil(n / e)
+ * 
+ * 
+ * showing events based on page number:
+ * 
+ * 1 ->  1-6
+ * 2 ->  7-12
+ * 3 -> 13-18 
  *
 ********************************************************************/
 
@@ -84,11 +91,12 @@ const calculatePageCount = function() {
 }
 
 // Determines which results to display based on page number
+// Any number greater than 0 valid
 const displayEvents = function(events, page) {
   console.log(events);
   for (i = 0; i < events.length; i++) {
     events[i].style.display = 'none';
-    if (i < MAX_EVENTS_PER_PAGE * page) {
+    if (i >= ((MAX_EVENTS_PER_PAGE * (page - 1)) ) && i < MAX_EVENTS_PER_PAGE * page) {
       events[i].style.display = 'block';
     }
   }
