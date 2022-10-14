@@ -94,9 +94,19 @@ const generateLink = function(n) {
 
 // Iteratively generate the given number of page links
 const generatePageLinks = function(pageNum) {
+  PAGE_LINKS.insertAdjacentHTML('beforeend',
+  `<li id="page-prev-link" class="page-item disabled">
+    <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
+  </li>`);
+
   for (i = 1; i <= pageNum; i++) {
     PAGE_LINKS.appendChild(generateLink(i));
   }
+
+  PAGE_LINKS.insertAdjacentHTML('beforeend',
+  `<li id="page-next-link" class="page-item">
+    <button class="page-link" onclick="nextPage()">Next</button>
+  </li>`);
 }
 
 const nextPage = function() {
