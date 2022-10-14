@@ -151,8 +151,10 @@ const prevPage = function() {
   updatePageLinks();
 }
 
-const gotoPage = function(p) {
-  
+const showPage = function(p) {
+  currentPage = p;
+  displayEvents(ALL_EVENTS, currentPage);
+  updatePageLinks();
 }
 
 const updatePageLinks = function() {
