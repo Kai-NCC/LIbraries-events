@@ -36,17 +36,22 @@ const RESULT_NUM_INDICATOR = document.querySelector('#result-number-indicator');
 const PAGE_LINKS = document.querySelector('#libraries-pagination-list');
 const MAX_EVENTS_PER_PAGE = 6;
 
+// for pagination testing
+const ALL_EVENTS = document.querySelectorAll('.single-event-container');
+
 /********************************************************************
  * UTILITIES
 ********************************************************************/
+
+let currentPage = 1;
+let numberOfPages = 1;
 
 window.onload = function() {
   console.log('test');
   calculatePageCount();
 
-  // for pagination testing
-  const allEvents = document.querySelectorAll('.single-event-container');
-  displayEvents(allEvents, 1);
+  displayEvents(ALL_EVENTS, currentPage);
+  updatePageLinks();
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -87,7 +92,10 @@ const calculatePageCount = function() {
   console.log(`number of results= ${events}`);
   const numPages = Math.ceil(events / MAX_EVENTS_PER_PAGE);
   console.log(`number of pages= ${numPages}`);
-  generatePageLinks(numPages);
+
+  numberOfPages = numPages;
+
+  generatePageLinks(numberOfPages);
 }
 
 // Determines which results to display based on page number
@@ -96,7 +104,7 @@ const displayEvents = function(events, page) {
   console.log(events);
   for (i = 0; i < events.length; i++) {
     events[i].style.display = 'none';
-    if (i >= ((MAX_EVENTS_PER_PAGE * (page - 1)) ) && i < MAX_EVENTS_PER_PAGE * page) {
+    if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
       events[i].style.display = 'block';
     }
   }
@@ -132,13 +140,44 @@ const generatePageLinks = function(pageNum) {
 }
 
 const nextPage = function() {
-
+  currentPage++;
+  displayEvents(ALL_EVENTS, currentPage);
+  updatePageLinks();
 }
 
 const prevPage = function() {
-
+  currentPage--;
+  displayEvents(ALL_EVENTS, currentPage);
+  updatePageLinks();
 }
 
 const gotoPage = function(p) {
   
+}
+
+const updatePageLinks = function() {
+  const prevLink = document.querySelector('#page-prev-link');
+  const nextLink = document.querySelector('#page-next-link');
+  const currentLink = document.querySelector(`#page-${currentPage}-link`);
+  const allLinks = document.querySelectorAll('.page-item');
+
+  if (currentPage === 1) {
+    prevLink.classList.add("disabled");
+    prevLink.firstElementChild.tabIndex="-1";
+    document.activeElement.blur();
+  } else {
+    prevLink.classList.remove("disabled");
+    prevLink.firstElementChild.tabIndex="0";
+  }
+  if (currentPage === numberOfPages) {
+    nextLink.classList.add("disabled");
+    nextLink.firstElementChild.tabIndex="-1";
+    document.activeElement.blur();
+  } else {
+    nextLink.classList.remove("disabled");
+    nextLink.firstElementChild.tabIndex="0";
+  }
+
+  allLinks.forEach(l => l.classList.remove('active'));
+  currentLink.classList.add('active');
 }
