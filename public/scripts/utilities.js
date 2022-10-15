@@ -39,6 +39,9 @@ const MAX_EVENTS_PER_PAGE = 6;
 // for pagination testing
 const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 
+// for filters testing
+setCookie('locationSelections', 'Acle, Diss', 1);
+
 /********************************************************************
  * UTILITIES
 ********************************************************************/
@@ -46,11 +49,20 @@ const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 let currentPage = 1;
 let numberOfPages = 1;
 
+let filteredEvents = ALL_EVENTS;
+
 window.onload = function() {
-  console.log('test');
+
+  [...ALL_EVENTS].forEach(e => e.style.display = 'none');
+
+  filteredEvents = applyFilters();
+
+  console.log(`filtered events:`);
+  console.log(filteredEvents);
+
   calculatePageCount();
 
-  displayEvents(ALL_EVENTS, currentPage);
+  displayEvents(filteredEvents, currentPage);
   updatePageLinks();
 }
 
@@ -81,27 +93,49 @@ function getCookie(cname) {
  * FILTERING
 ********************************************************************/
 
+const applyFilters = function() {
+  const locations = getCookie('locationSelections');
+  const filteredEventsLocation = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+    return checkLocation(eventNum, locations);
+  });
+  return filteredEventsLocation;
+}
 
+function checkLocation(n, cookie) {
+  const locations = cookie.split(","); // [Time & Tide, Cromer]
+  if (locations == '')
+    return true;
+  const locationEl = document.getElementById(`result-${n}-location`);
+  let match = false;
+  locations.forEach(function (loc) {
+    if (locationEl.textContent.includes(loc)) {
+      match = true;
+    }
+  });
+  return match;
+}
 
 /********************************************************************
  * PAGINATION
 ********************************************************************/
 
 const calculatePageCount = function() {
-  const events = RESULTS_WRAPPER.children.length;
-  console.log(`number of results= ${events}`);
+  const events = filteredEvents.length;
   const numPages = Math.ceil(events / MAX_EVENTS_PER_PAGE);
-  console.log(`number of pages= ${numPages}`);
 
   numberOfPages = numPages;
 
-  generatePageLinks(numberOfPages);
+  console.log(`generating ${numPages} pages`);
+  generatePageLinks(numPages);
 }
 
 // Determines which results to display based on page number
 // Any number greater than 0 valid
 const displayEvents = function(events, page) {
-  console.log(events);
+
   for (i = 0; i < events.length; i++) {
     events[i].style.display = 'none';
     if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
@@ -141,23 +175,26 @@ const generatePageLinks = function(pageNum) {
 
 const nextPage = function() {
   currentPage++;
-  displayEvents(ALL_EVENTS, currentPage);
+  displayEvents(filteredEvents, currentPage);
   updatePageLinks();
 }
 
 const prevPage = function() {
   currentPage--;
-  displayEvents(ALL_EVENTS, currentPage);
+  displayEvents(filteredEvents, currentPage);
   updatePageLinks();
 }
 
 const showPage = function(p) {
   currentPage = p;
-  displayEvents(ALL_EVENTS, currentPage);
+  displayEvents(filteredEvents, currentPage);
   updatePageLinks();
 }
 
 const updatePageLinks = function() {
+
+  if (numberOfPages === 1) return;
+
   const prevLink = document.querySelector('#page-prev-link');
   const nextLink = document.querySelector('#page-next-link');
   const currentLink = document.querySelector(`#page-${currentPage}-link`);
