@@ -10256,6 +10256,9 @@ textarea.form-control-lg {
 .card-light .card-text {
   color: #495057;
 }
+.card-light:focus-within {
+  outline: none;
+}
 
 .card-horizontal {
   flex-direction: row;
