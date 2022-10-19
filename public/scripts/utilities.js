@@ -36,7 +36,6 @@ const RESULT_NUM_INDICATOR = document.querySelector('#result-number-indicator');
 const PAGE_LINKS = document.querySelector('#libraries-pagination-list');
 const MAX_EVENTS_PER_PAGE = 6;
 
-// for pagination testing
 const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 
 // for filters testing
@@ -61,9 +60,9 @@ window.onload = function() {
   console.log(filteredEvents);
 
   calculatePageCount();
+  updatePageLinks();
 
   displayEvents(filteredEvents, currentPage);
-  updatePageLinks();
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -135,7 +134,6 @@ const calculatePageCount = function() {
 // Determines which results to display based on page number
 // Any number greater than 0 valid
 const displayEvents = function(events, page) {
-
   for (i = 0; i < events.length; i++) {
     events[i].style.display = 'none';
     if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
