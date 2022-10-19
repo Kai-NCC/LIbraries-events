@@ -11576,7 +11576,7 @@ section.section_stage_theme .lead {
   border: solid #212529 3px;
   min-width: 34px;
   min-height: 34px;
-  margin: 0;
+  margin: 0px 10px 0px 0px;
 }
 .search-component .selection-item .form-check-label .form-check-input:active {
   box-shadow: none;

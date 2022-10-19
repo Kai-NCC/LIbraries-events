@@ -45,24 +45,28 @@ setCookie('locationSelections', 'Acle, Diss', 1);
  * UTILITIES
 ********************************************************************/
 
-let currentPage = 1;
-let numberOfPages = 1;
-
-let filteredEvents = ALL_EVENTS;
+// using the underscore to distinguish global variables
+let _currentPage = 1;
+let _numberOfPages = 1;
+let _filteredEvents = ALL_EVENTS;
 
 window.onload = function() {
 
   [...ALL_EVENTS].forEach(e => e.style.display = 'none');
 
-  filteredEvents = applyFilters();
+  _filteredEvents = applyFilters();
 
   console.log(`filtered events:`);
-  console.log(filteredEvents);
+  console.log(_filteredEvents);
 
+  refreshResults();
+}
+
+const refreshResults = function() {
   calculatePageCount();
   updatePageLinks();
 
-  displayEvents(filteredEvents, currentPage);
+  displayEvents(_filteredEvents, _currentPage);
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -91,6 +95,29 @@ function getCookie(cname) {
 /********************************************************************
  * FILTERING
 ********************************************************************/
+
+const applyForm = function(filterType, form) {
+
+}
+
+const clearForm = function(filterType) {
+  switch(filterType) {
+    case 'location':
+      setCookie('locationSelections', '', 1);
+      break;
+    case 'subject':
+      setCookie('subjectSelections', '', 1);
+      break;
+    case 'date':
+      setCookie('dateSelections', '', 1);
+      break;
+    default:
+      console.error(`cannot clear filter "${filterType}" - does not exist`);
+  }
+  _filteredEvents = applyFilters();
+  refreshResults();
+  return;
+}
 
 const applyFilters = function() {
   const locations = getCookie('locationSelections');
@@ -122,10 +149,10 @@ function checkLocation(n, cookie) {
 ********************************************************************/
 
 const calculatePageCount = function() {
-  const events = filteredEvents.length;
+  const events = _filteredEvents.length;
   const numPages = Math.ceil(events / MAX_EVENTS_PER_PAGE);
 
-  numberOfPages = numPages;
+  _numberOfPages = numPages;
 
   console.log(`generating ${numPages} pages`);
   generatePageLinks(numPages);
@@ -154,6 +181,8 @@ const generateLink = function(n) {
 // Iteratively generate the given number of page links
 const generatePageLinks = function(pageNum) {
 
+  PAGE_LINKS.innerHTML = '';
+
   if (pageNum < 2) return;
 
   PAGE_LINKS.insertAdjacentHTML('beforeend',
@@ -172,33 +201,33 @@ const generatePageLinks = function(pageNum) {
 }
 
 const nextPage = function() {
-  currentPage++;
-  displayEvents(filteredEvents, currentPage);
+  _currentPage++;
+  displayEvents(_filteredEvents, _currentPage);
   updatePageLinks();
 }
 
 const prevPage = function() {
-  currentPage--;
-  displayEvents(filteredEvents, currentPage);
+  _currentPage--;
+  displayEvents(_filteredEvents, _currentPage);
   updatePageLinks();
 }
 
 const showPage = function(p) {
-  currentPage = p;
-  displayEvents(filteredEvents, currentPage);
+  _currentPage = p;
+  displayEvents(_filteredEvents, _currentPage);
   updatePageLinks();
 }
 
 const updatePageLinks = function() {
 
-  if (numberOfPages === 1) return;
+  if (_numberOfPages === 1) return;
 
   const prevLink = document.querySelector('#page-prev-link');
   const nextLink = document.querySelector('#page-next-link');
-  const currentLink = document.querySelector(`#page-${currentPage}-link`);
+  const currentLink = document.querySelector(`#page-${_currentPage}-link`);
   const allLinks = document.querySelectorAll('.page-item');
 
-  if (currentPage === 1) {
+  if (_currentPage === 1) {
     prevLink.classList.add("disabled");
     prevLink.firstElementChild.tabIndex="-1";
     document.activeElement.blur();
@@ -206,7 +235,7 @@ const updatePageLinks = function() {
     prevLink.classList.remove("disabled");
     prevLink.firstElementChild.tabIndex="0";
   }
-  if (currentPage === numberOfPages) {
+  if (_currentPage === _numberOfPages) {
     nextLink.classList.add("disabled");
     nextLink.firstElementChild.tabIndex="-1";
     document.activeElement.blur();
