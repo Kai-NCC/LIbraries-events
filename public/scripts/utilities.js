@@ -27,6 +27,8 @@
  * CONSTANTS
 ********************************************************************/
 
+const LOCATION_DROPDOWN = document.getElementsByName('locationOption');
+
 const RESULTS_WRAPPER = document.querySelector('#page-content');
 
 const SEARCH_INDICATOR = document.querySelector('#search-indicator');
@@ -51,18 +53,16 @@ let _numberOfPages = 1;
 let _filteredEvents = ALL_EVENTS;
 
 window.onload = function() {
-
-  [...ALL_EVENTS].forEach(e => e.style.display = 'none');
-
-  _filteredEvents = applyFilters();
-
-  console.log(`filtered events:`);
-  console.log(_filteredEvents);
-
   refreshResults();
 }
 
 const refreshResults = function() {
+  _currentPage = 1;
+  _filteredEvents = applyFilters();
+
+  console.log(`filtered events=`);
+  console.log(_filteredEvents);
+
   calculatePageCount();
   updatePageLinks();
 
@@ -96,8 +96,18 @@ function getCookie(cname) {
  * FILTERING
 ********************************************************************/
 
-const applyForm = function(filterType, form) {
 
+const applyForm = function(filterType, form) {
+  if (filterType === 'location') {
+    let locations = [];
+    LOCATION_DROPDOWN.forEach(function(location) {
+      if (location.checked === true) {
+        locations.push(location.value);
+      }
+    });
+    setCookie('locationSelections', locations, 1);
+  }
+  refreshResults();
 }
 
 const clearForm = function(filterType) {
@@ -132,8 +142,8 @@ const applyFilters = function() {
 
 function checkLocation(n, cookie) {
   const locations = cookie.split(","); // [Time & Tide, Cromer]
-  if (locations == '')
-    return true;
+  if (locations == '') return true;
+
   const locationEl = document.getElementById(`result-${n}-location`);
   let match = false;
   locations.forEach(function (loc) {
@@ -161,6 +171,7 @@ const calculatePageCount = function() {
 // Determines which results to display based on page number
 // Any number greater than 0 valid
 const displayEvents = function(events, page) {
+  [...ALL_EVENTS].forEach(e => e.style.display = 'none');
   for (i = 0; i < events.length; i++) {
     events[i].style.display = 'none';
     if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
