@@ -140,6 +140,10 @@
   .card-text {
     color: $gray-700;
   }
+
+  &:focus-within {
+    outline: none;
+  }
 }
 .card-horizontal {
   flex-direction: row;
@@ -152,4 +156,8 @@
       margin: 0;
     }
   }
+}
+
+.date-overlay {
+  display: none;
 }

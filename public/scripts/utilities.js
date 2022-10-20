@@ -13,208 +13,74 @@
  * resulting number of pages (p)
  * 
  * p = ceil(n / e)
+ * 
+ * 
+ * showing events based on page number:
+ * 
+ * 1 ->  1-6
+ * 2 ->  7-12
+ * 3 -> 13-18 
  *
 ********************************************************************/
 
+/********************************************************************
+ * CONSTANTS
+********************************************************************/
 
-let currentPage = 1;
+const LOCATION_DROPDOWN = document.getElementsByName('locationOption');
 
-const page1 = document.getElementById("page-1");
-const page2 = document.getElementById("page-2");
-const page3 = document.getElementById("page-3");
+const RESULTS_WRAPPER = document.querySelector('#page-content');
 
-const link1 = document.getElementById("page1-link");
-const link2 = document.getElementById("page2-link");
-const link3 = document.getElementById("page3-link");
+const SEARCH_INDICATOR = document.querySelector('#search-indicator');
+const FILTER_INDICATOR = document.querySelector('#multi-filter-indicator');
+const RESULT_NUM_INDICATOR = document.querySelector('#result-number-indicator');
 
-const linkPrev = document.getElementById("page-prev-link");
-const linkNext = document.getElementById("page-next-link");
+const PAGE_LINKS = document.querySelector('#libraries-pagination-list');
+const MAX_EVENTS_PER_PAGE = 6;
 
-let numberOfLocations = 0;
-let numberOfSubjects = 0;
+const ALL_EVENTS = document.querySelectorAll('.single-event-container');
+
+// for filters testing
+setCookie('locationSelections', 'Acle, Diss', 1);
+
+/********************************************************************
+ * UTILITIES
+********************************************************************/
+
+// using the underscore to distinguish global variables
+let _currentPage = 1;
+let _numberOfPages = 1;
+let _filteredEvents = ALL_EVENTS;
 
 window.onload = function() {
-  let locations = getCookie('locationsList');
-  let subjects = getCookie('subjectsList');
-
-  if (locations === '') {
-    console.log(`locations cookie empty, returning`);
-  } else {
-    let locationsArray = locations.split(",");
-    console.log(`cookie contents= ${locations}`);
-
-    let locationsForm = document.getElementById("locationDropdownForm");
-    let locationsModalForm = document.getElementById("locationModalForm");
-
-    for (var i = 0; i < locationsForm.length; i++) {
-      console.log(`checkbox ${i} = ${locationsForm[i].value}`);
-      if (locationsForm[i].value)
-      numberOfLocations++;
-    }
-
-    let checkedLocations = [];
-
-    for (i = 0; i < locationsArray.length; i++) {
-      console.log(`analysing option ${locationsArray[i]}`);
-      for (j = 0; j < locationsForm.length; j++) {
-        if (locationsForm[j].value == locationsArray[i]) {
-          console.log(`input value ${locationsForm[j].value} == ${locationsArray[i]}, checked`);
-          locationsForm[j].checked = true;
-          locationsModalForm[j-1].checked = true; // no idea why this is the case, will revist
-          checkedLocations.push(locationsArray[i]);
-        }
-      }
-    }
-
-    updateLocationBtn(checkedLocations);
-
-    let currentPage = 1;
-    page2.style.display = "none";
-    page3.style.display = "none";
-  }
-
-  if (subjects === '') {
-    console.log(`subjects cookie empty, returning`);
-  } else {
-    let subjectsArray = subjects.split(",");
-    console.log(`cookie contents= ${subjects}`);
-
-    let subjectsForm = document.getElementById("subjectDropdownForm");
-    let subjectsModalForm = document.getElementById("subjectModalForm");
-
-    for (var i = 0; i < subjectsForm.length; i++) {
-      console.log(`checkbox ${i} = ${subjectsForm[i].value}`);
-      if (subjectsForm[i].value)
-      numberOfSubjects++;
-    }
-
-    let checkedSubjects = [];
-
-    for (i = 0; i < subjectsArray.length; i++) {
-      console.log(`analysing option ${subjectsArray[i]}`);
-      for (j = 0; j < subjectsForm.length; j++) {
-        if (subjectsForm[j].value == subjectsArray[i]) {
-          console.log(`input value ${subjectsForm[j].value} == ${subjectsArray[i]}, checked`);
-          subjectsForm[j].checked = true;
-          subjectsModalForm[j-1].checked = true;
-          checkedSubjects.push(subjectsArray[i]);
-        }
-      }
-    }
-
-    updateSubjectBtn(checkedSubjects);
-  }
-  
+  refreshResults();
 }
 
-function updateLocationBtn(locationsArray) {
-  let dropdownButton = document.getElementById("dropdownMenuLocation");
-  let modalButton = document.getElementById("filterModalLocationButton");
+const refreshResults = function() {
+  _currentPage = 1;
+  _filteredEvents = applyFilters();
 
-  console.log(`CHECKED LOCATIONS = ${locationsArray}`);
+  console.log(`filtered events=`);
+  console.log(_filteredEvents);
 
-  if (locationsArray.length > 1) {
-    console.log(`MORE THAN one location, setting button text to = ${locationsArray.length}`);
-    dropdownButton.innerHTML = `Location • ${locationsArray.length}`;
-    modalButton.innerHTML = `Location • ${locationsArray.length}`;
-  } else if (locationsArray.length == 1) {
-    console.log(`one location, setting button text to = ${locationsArray[0]}`);
-    dropdownButton.innerHTML = `${locationsArray[0]}`;
-    modalButton.innerHTML = `${locationsArray[0]}`;
-  } else {
-    console.log(`other, setting button text to = Location`);
-    dropdownButton.innerHTML = `Location`;
-    modalButton.innerHTML = `Location`;
-  }
-}
-function updateSubjectBtn(subjectsArray) {
-  let dropdownButton = document.getElementById("dropdownMenuSubject");
-  let modalButton = document.getElementById("filterModalSubjectButton");
+  calculatePageCount();
+  updatePageLinks();
 
-  console.log(`CHECKED SUBJECTS = ${subjectsArray}`);
-
-  if (subjectsArray.length > 1) {
-    console.log(`MORE THAN one subject, setting button text to = ${subjectsArray.length}`);
-    dropdownButton.innerHTML = `Subject • ${subjectsArray.length}`;
-    modalButton.innerHTML = `Subject • ${subjectsArray.length}`;
-  } else if (subjectsArray.length == 1) {
-    console.log(`one subject, setting button text to = ${subjectsArray[0]}`);
-    dropdownButton.innerHTML = `${subjectsArray[0]}`;
-    modalButton.innerHTML = `${subjectsArray[0]}`;
-  } else {
-    console.log(`other, setting button text to = Subject`);
-    dropdownButton.innerHTML = `Subject`;
-    modalButton.innerHTML = `Subject`;
-  }
-}
-
-function applyFiltersLocation(locations) {
-  let locationsList = [];
-
-  for (var i = 0; i < locations.length; i++) {
-    if (locations[i].checked) {
-      text = locations[i].value;
-      locationsList.push(text);
-      console.log(`added location ${text}`);
-    }
-  }
-
-  console.log(`list of locations= ${locationsList}`);
-
-  let hour = 1/24;
-  setCookie('locationsList', locationsList, hour);
-
-  window.location.href = "{{ '/libraries-events-search' | url }}";
-}
-
-function applyFiltersSubject(subjects) {
-  let subjectsList = [];
-
-  for (var i = 0; i < subjects.length; i++) {
-    if (subjects[i].checked) {
-      text = subjects[i].value;
-      subjectsList.push(text);
-      console.log(`added subject ${text}`);
-    }
-  }
-
-  console.log(`list of subjects= ${subjectsList}`);
-
-  let hour = 1/24;
-  setCookie('subjectsList', subjectsList, hour);
-
-  window.location.href = "{{ '/libraries-events-search' | url }}";
-}
-
-function clearFiltersLocation() {
-  let locationsList = [];
-
-  let hour = 1/24;
-  setCookie('locationsList', locationsList, hour);
-
-  window.location.href = "{{ '/libraries-events-search' | url }}";
-}
-function clearFiltersSubject() {
-  let subjectsList = [];
-
-  let hour = 1/24;
-  setCookie('subjectsList', subjectsList, hour);
-
-  window.location.href = "{{ '/libraries-events-search' | url }}";
+  displayEvents(_filteredEvents, _currentPage);
 }
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  let expires = "expires="+ d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  let expires = 'expires='+ d.toUTCString();
+  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
 }
 
 function getCookie(cname) {
-  let name = cname + "=";
+  let name = cname + '=';
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -223,76 +89,172 @@ function getCookie(cname) {
       return c.substring(name.length, c.length);
     }
   }
-  return "";
+  return '';
 }
 
-function nextPage() {
-  if (currentPage >= 3) return;
-  showPage(currentPage + 1);
-}
+/********************************************************************
+ * FILTERING
+********************************************************************/
 
-function prevPage() {
-  if (currentPage <= 1) return;
-  showPage(currentPage - 1);
-}
 
-function showPage(pageNum) {
-  
-  if (pageNum == 1) {
-    page1.style.display = "flex";
-    page2.style.display = "none";
-    page3.style.display = "none";
-
-    link1.classList.add("active");
-    link2.classList.remove("active");
-    link3.classList.remove("active");
-
-    linkPrev.classList.add("disabled");
-    linkPrev.firstElementChild.tabIndex="-1";
-    linkNext.classList.remove("disabled");
-    linkNext.firstElementChild.tabIndex="0";
-    currentPage = 1;
-
-    page1.getElementsByTagName('a')[0].focus();
-
-    page1.scrollIntoView();
-  } else if (pageNum == 2) {
-    page1.style.display = "none";
-    page2.style.display = "flex";
-    page3.style.display = "none";
-
-    link1.classList.remove("active");
-    link2.classList.add("active");
-    link3.classList.remove("active");
-
-    linkPrev.classList.remove("disabled");
-    linkPrev.firstElementChild.tabIndex="0";
-    linkNext.classList.remove("disabled");
-    linkNext.firstElementChild.tabIndex="0";
-    currentPage = 2;
-
-    page2.getElementsByTagName('a')[0].focus();
-
-    page2.scrollIntoView();
-  } else if (pageNum == 3) {
-    page1.style.display = "none";
-    page2.style.display = "none";
-    page3.style.display = "flex";
-
-    link1.classList.remove("active");
-    link2.classList.remove("active");
-    link3.classList.add("active");
-
-    linkPrev.classList.remove("disabled");
-    linkPrev.firstElementChild.tabIndex="0";
-    linkNext.classList.add("disabled");
-    linkNext.firstElementChild.tabIndex="-1";
-    currentPage = 3;
-
-    page3.getElementsByTagName('a')[0].focus();
-
-    page3.scrollIntoView();
-  } else {
-    console.log("pagination error");
+const applyForm = function(filterType, form) {
+  if (filterType === 'location') {
+    let locations = [];
+    LOCATION_DROPDOWN.forEach(function(location) {
+      if (location.checked === true) {
+        locations.push(location.value);
+      }
+    });
+    setCookie('locationSelections', locations, 1);
   }
+  refreshResults();
+}
+
+const clearForm = function(filterType) {
+  switch(filterType) {
+    case 'location':
+      setCookie('locationSelections', '', 1);
+      break;
+    case 'subject':
+      setCookie('subjectSelections', '', 1);
+      break;
+    case 'date':
+      setCookie('dateSelections', '', 1);
+      break;
+    default:
+      console.error(`cannot clear filter "${filterType}" - does not exist`);
+  }
+  _filteredEvents = applyFilters();
+  refreshResults();
+  return;
+}
+
+const applyFilters = function() {
+  const locations = getCookie('locationSelections');
+  const filteredEventsLocation = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+    return checkLocation(eventNum, locations);
+  });
+  return filteredEventsLocation;
+}
+
+function checkLocation(n, cookie) {
+  const locations = cookie.split(","); // [Time & Tide, Cromer]
+  if (locations == '') return true;
+
+  const locationEl = document.getElementById(`result-${n}-location`);
+  let match = false;
+  locations.forEach(function (loc) {
+    if (locationEl.textContent.includes(loc)) {
+      match = true;
+    }
+  });
+  return match;
+}
+
+/********************************************************************
+ * PAGINATION
+********************************************************************/
+
+const calculatePageCount = function() {
+  const events = _filteredEvents.length;
+  const numPages = Math.ceil(events / MAX_EVENTS_PER_PAGE);
+
+  _numberOfPages = numPages;
+
+  console.log(`generating ${numPages} pages`);
+  generatePageLinks(numPages);
+}
+
+// Determines which results to display based on page number
+// Any number greater than 0 valid
+const displayEvents = function(events, page) {
+  [...ALL_EVENTS].forEach(e => e.style.display = 'none');
+  for (i = 0; i < events.length; i++) {
+    events[i].style.display = 'none';
+    if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
+      events[i].style.display = 'block';
+    }
+  }
+}
+
+// Takes the relevant number, returns the final element markup for a single link
+const generateLink = function(n) {
+  const newLink = document.createElement('li');
+  newLink.id = `page-${n}-link`;
+  newLink.classList.add('page-item');
+  newLink.innerHTML = `<button class="page-link" onclick="showPage(${n})">${n}</button>`;
+  return newLink;
+}
+
+// Iteratively generate the given number of page links
+const generatePageLinks = function(pageNum) {
+
+  PAGE_LINKS.innerHTML = '';
+
+  if (pageNum < 2) return;
+
+  PAGE_LINKS.insertAdjacentHTML('beforeend',
+  `<li id="page-prev-link" class="page-item disabled">
+    <button class="page-link" onclick="prevPage()" tabindex="-1">Previous</button>
+  </li>`);
+
+  for (i = 1; i <= pageNum; i++) {
+    PAGE_LINKS.appendChild(generateLink(i));
+  }
+
+  PAGE_LINKS.insertAdjacentHTML('beforeend',
+  `<li id="page-next-link" class="page-item">
+    <button class="page-link" onclick="nextPage()">Next</button>
+  </li>`);
+}
+
+const nextPage = function() {
+  _currentPage++;
+  displayEvents(_filteredEvents, _currentPage);
+  updatePageLinks();
+}
+
+const prevPage = function() {
+  _currentPage--;
+  displayEvents(_filteredEvents, _currentPage);
+  updatePageLinks();
+}
+
+const showPage = function(p) {
+  _currentPage = p;
+  displayEvents(_filteredEvents, _currentPage);
+  updatePageLinks();
+}
+
+const updatePageLinks = function() {
+
+  if (_numberOfPages === 1) return;
+
+  const prevLink = document.querySelector('#page-prev-link');
+  const nextLink = document.querySelector('#page-next-link');
+  const currentLink = document.querySelector(`#page-${_currentPage}-link`);
+  const allLinks = document.querySelectorAll('.page-item');
+
+  if (_currentPage === 1) {
+    prevLink.classList.add("disabled");
+    prevLink.firstElementChild.tabIndex="-1";
+    document.activeElement.blur();
+  } else {
+    prevLink.classList.remove("disabled");
+    prevLink.firstElementChild.tabIndex="0";
+  }
+  if (_currentPage === _numberOfPages) {
+    nextLink.classList.add("disabled");
+    nextLink.firstElementChild.tabIndex="-1";
+    document.activeElement.blur();
+  } else {
+    nextLink.classList.remove("disabled");
+    nextLink.firstElementChild.tabIndex="0";
+  }
+
+  allLinks.forEach(l => l.classList.remove('active'));
+  currentLink.classList.add('active');
 }
