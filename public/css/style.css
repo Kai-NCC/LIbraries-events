@@ -11470,6 +11470,13 @@ section.section_stage_theme .lead {
   overflow-y: scroll;
   position: relative;
 }
+.search-component .search-settings .filters .dropdown .dropdown-menu ul {
+  list-style: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .search-component .search-settings .filters .dropdown .dropdown-menu.show {
   padding: 0;
   display: flex;

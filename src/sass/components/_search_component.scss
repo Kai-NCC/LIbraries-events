@@ -171,12 +171,12 @@
           overflow-y: scroll;
           position: relative;
 
-          @include media-breakpoint-down(lg) {
-            // position: absolute;
-            // width: 100%;
-            // top: 0 !important;
-            // left: 0 !important;
-            // transform: none;
+          ul {
+            list-style: none;
+            padding-left: 0px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
           }
         }
         .dropdown-menu.show {
