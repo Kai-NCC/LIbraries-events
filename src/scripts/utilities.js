@@ -28,6 +28,7 @@
 ********************************************************************/
 
 const LOCATION_DROPDOWN = document.getElementsByName('locationOption');
+const SUBJECT_DROPDOWN = document.getElementsByName('locationOption');
 
 const RESULTS_WRAPPER = document.querySelector('#page-content');
 
@@ -97,39 +98,38 @@ function getCookie(cname) {
 ********************************************************************/
 
 
-const applyForm = function(filterType, form) {
-  if (filterType === 'location') {
-    let locations = [];
-    LOCATION_DROPDOWN.forEach(function(location) {
-      if (location.checked === true) {
-        locations.push(location.value);
-      }
-    });
-    setCookie('locationSelections', locations, 1);
+const applyForm = function(filterType, cookie) {
+  let dropdown;
+  switch (filterType) {
+    case ('location'):
+      dropdown = LOCATION_DROPDOWN;
+    case ('subject'):
+      dropdown = SUBJECT_DROPDOWN;
+    default:
+      dropdown = LOCATION_DROPDOWN;
+      // in practice this may never be used.
+      // replace with return?
   }
+
+  let items = [];
+  dropdown.forEach(function(checkbox) {
+    if (checkbox.checked === true) {
+      items.push(checkbox.value);
+    }
+  });
+  setCookie(cookie, items, 1);
+
   refreshResults();
 }
 
-const clearForm = function(filterType) {
-  switch(filterType) {
-    case 'location':
-      setCookie('locationSelections', '', 1);
-      break;
-    case 'subject':
-      setCookie('subjectSelections', '', 1);
-      break;
-    case 'date':
-      setCookie('dateSelections', '', 1);
-      break;
-    default:
-      console.error(`cannot clear filter "${filterType}" - does not exist`);
-  }
+const clearForm = function(cookie) {
+  setCookie(cookie, '', 1);
   _filteredEvents = applyFilters();
   refreshResults();
   return;
 }
 
-const applyFilters = function() {
+const applyFiltersOld = function() {
   const locations = getCookie('locationSelections');
   const filteredEventsLocation = [...ALL_EVENTS].filter(function (e) {
     const s = e.id.split('-');
@@ -138,6 +138,30 @@ const applyFilters = function() {
     return checkLocation(eventNum, locations);
   });
   return filteredEventsLocation;
+}
+
+// works, using as demo
+const applyFilters = function() {
+  const locations = getCookie('locationSelections');
+  //const subject = getCookie('subjectSelections');
+
+
+  const filteredEvents = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+    //const subject = document.querySelector(`#result-${eventNum}-subject`);
+
+    let match = false;
+
+    if (checkLocation(eventNum, locations)) {
+      match = true;
+    }
+
+    return match;
+  });
+  return filteredEvents;
 }
 
 function checkLocation(n, cookie) {
@@ -153,6 +177,31 @@ function checkLocation(n, cookie) {
   });
   return match;
 }
+
+/**
+ * 
+ * 1. store cookie contents as variables
+ * 2. for each cookies, store values as array
+ * 3. cycle through events list once
+ * 
+ * for each event {
+ *   if event matches every filter {
+ *     add to filteredLocations
+ *   } else {
+ *     hide and skip
+ *   }
+ * }
+ * 
+ */
+
+const applyFiltersNew = function() {
+  const locations = getCookie('locationSelections').split(",");
+  //const subjects = getCookie('subjectSelections').split(",");
+
+  const filterList = [locations]; // 
+
+}
+
 
 /********************************************************************
  * PAGINATION
