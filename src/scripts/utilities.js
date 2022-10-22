@@ -42,7 +42,7 @@ const MAX_EVENTS_PER_PAGE = 6;
 const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 
 // for filters testing
-setCookie('locationSelections', 'Acle, Diss', 1);
+setCookie('locationSelections', '', 1);
 
 /********************************************************************
  * UTILITIES
@@ -161,6 +161,10 @@ const applyFilters = function() {
 
     return match;
   });
+
+  console.log('object test:');
+  applyFiltersNew();
+  
   return filteredEvents;
 }
 
@@ -195,11 +199,53 @@ function checkLocation(n, cookie) {
  */
 
 const applyFiltersNew = function() {
-  const locations = getCookie('locationSelections').split(",");
+  //const locations = getCookie('locationSelections').split(",");
   //const subjects = getCookie('subjectSelections').split(",");
 
-  const filterList = [locations]; // 
+  //const filterList = [locations];
+  // filterList is an array of objects, where each object has a "name" and an array of filters
+  // eg. locations = {filters: [Norwich, Dereham]}
 
+  const locations = {
+    name: 'location',
+    filters: getCookie('locationSelections').split(","),
+  };
+
+  const filterList = [locations];
+
+  console.log(locations);
+
+  const filteredEvents = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+
+    filterList.forEach(function(f) {
+      const value = document.querySelector(`#result-${eventNum}-${f.name}`);
+      let match = false;
+      console.log(`does ${f.filters} match ${value.textContent}?`);
+      f.filters.forEach(function (item) {
+        if (value.textContent.includes(item)) {
+          console.log(true);
+          match = true;
+        } else {
+          console.log(false);
+        }
+      });
+    });
+
+    /*
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+
+    let match = false;
+
+    if (checkLocation(eventNum, locations)) {
+      match = true;
+    }
+
+    return match;
+    */
+  });
+  //return filteredEvents;
 }
 
 
