@@ -44,6 +44,12 @@ const MAX_EVENTS_PER_PAGE = 6;
 
 const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 
+const FORM = document.querySelector('#main-search-form');
+function handleForm(e) {
+  e.preventDefault();
+} 
+FORM.addEventListener('submit', handleForm);
+
 // for filters testing
 setCookie('locationSelections', '', 1);
 
@@ -89,14 +95,32 @@ function fillFields() {
   DATE.value = dateCookie;
 }
 
-const picker = document.querySelector("duet-date-picker");
-const output = document.querySelector("output");
+const picker = document.querySelector('duet-date-picker');
+const output = document.querySelector('output');
 
-picker.addEventListener("duetChange", function(event) {
+picker.addEventListener('duetChange', function(event) {
   console.log(event.detail.value);
   setCookie('date', event.detail.value, 1);
   refreshResults();
 });
+
+const advancedSearchLink = function() {
+  // set search query, if any
+  const query = SEARCH_INPUT.value;
+  if (query)
+    setCookie('searchQuery', query, 1);
+  else
+    setCookie('searchQuery', '', 1);
+
+  const date = DATE.value;
+  if (date != '')
+    setCookie('date', date, 1);
+  else
+    setCookie('date', '', 1);
+
+  setCookie('goToFilters', 'yes', 1);
+  refreshResults();
+}
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -183,15 +207,8 @@ const applyFilters = function() {
 
     let match = false;
 
-    if (checkLocation(eventNum, locations)) {
+    if (checkLocation(eventNum, locations) && checkDate(eventNum, getCookie('date')) && checkSearch(eventNum, getCookie('searchQuery'))) {
       match = true;
-    } else {
-      match = false;
-    }
-    if (checkDate(eventNum, getCookie('date'))) {
-      match = true;
-    } else {
-      match = false;
     }
 
     return match;
@@ -252,6 +269,20 @@ function checkDate(n, cookie) {
   console.log(`checking date ${dateM}=${month} and ${dateD}=${day}`);
 
   return (dateM === month && dateD === day);
+}
+
+function checkSearch(n, cookie) {
+  if (cookie == '')
+    return true;
+  const typeEl = document.getElementById(`result-${n}-type`);
+  const locationEl = document.getElementById(`result-${n}-location`);
+  const titleEl = document.getElementById(`result-${n}-title`);
+  const descEl = document.getElementById(`result-${n}-desc`);
+  let match = false;
+  return typeEl.textContent.toLowerCase().includes(cookie.toLowerCase())
+      || locationEl.textContent.toLowerCase().includes(cookie.toLowerCase()) 
+      || titleEl.textContent.toLowerCase().includes(cookie.toLowerCase())
+      || descEl.textContent.toLowerCase().includes(cookie.toLowerCase());
 }
 
 /**

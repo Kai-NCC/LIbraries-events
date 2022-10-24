@@ -26,9 +26,9 @@
           <h1 class="h2">Libraries events search</h1>
           <p class="text-muted mt-4 mb-2">Enter keywords to search libraries events</p>
           <div class="search-wrapper my-0">
-            <form class="form-inline d-flex libraries-search-area" role="search" action="{{ '/' | url }}" aria-label="Libraries events">
+            <form id="main-search-form" class="form-inline d-flex libraries-search-area" role="search" onsubmit="advancedSearchLink()" aria-label="Libraries events">
               <input id="libraries-search-input" class="form-control" type="search" placeholder="" aria-label="Search">
-              <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="submit">Find events</button>
+              <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="button" onclick="advancedSearchLink()">Find events</button>
             </form>
           </div>
           <div class="row {{rowDefaults}}">
