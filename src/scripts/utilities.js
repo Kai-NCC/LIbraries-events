@@ -27,6 +27,9 @@
  * CONSTANTS
 ********************************************************************/
 
+const SEARCH_INPUT = document.querySelector('#libraries-search-input');
+const DATE = document.querySelector('#date');
+
 const LOCATION_DROPDOWN = document.getElementsByName('locationOption');
 const SUBJECT_DROPDOWN = document.getElementsByName('locationOption');
 
@@ -54,6 +57,7 @@ let _numberOfPages = 1;
 let _filteredEvents = ALL_EVENTS;
 
 window.onload = function() {
+  fillFields();
   refreshResults();
 }
 
@@ -64,11 +68,35 @@ const refreshResults = function() {
   console.log(`filtered events=`);
   console.log(_filteredEvents);
 
+  if (_filteredEvents.length === 0) {
+    console.log(`No results!`);
+    displayEvents(_filteredEvents, _currentPage);
+    return;
+  }
+
   calculatePageCount();
   updatePageLinks();
 
   displayEvents(_filteredEvents, _currentPage);
 }
+
+
+function fillFields() {
+  const dateCookie = getCookie('date');
+  const searchCookie = getCookie('searchQuery');
+
+  SEARCH_INPUT.value = searchCookie;
+  DATE.value = dateCookie;
+}
+
+const picker = document.querySelector("duet-date-picker");
+const output = document.querySelector("output");
+
+picker.addEventListener("duetChange", function(event) {
+  console.log(event.detail.value);
+  setCookie('date', event.detail.value, 1);
+  refreshResults();
+});
 
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
@@ -157,6 +185,13 @@ const applyFilters = function() {
 
     if (checkLocation(eventNum, locations)) {
       match = true;
+    } else {
+      match = false;
+    }
+    if (checkDate(eventNum, getCookie('date'))) {
+      match = true;
+    } else {
+      match = false;
     }
 
     return match;
@@ -180,6 +215,43 @@ function checkLocation(n, cookie) {
     }
   });
   return match;
+}
+
+function checkDate(n, cookie) {
+  if (cookie == '') {
+    return true;
+  }
+
+  // YYYY-MM-DD
+  const date = cookie.split("-");
+
+  const dateM = Number(date[1]);
+  const dateD = Number(date[2]);
+
+  const monthEl = document.getElementById(`result-${n}-month`);
+  const dayEl = document.getElementById(`result-${n}-day`);
+  let month = 0;
+  let day = +dayEl.textContent; // the '+' converts from a string to a number :)
+
+  switch (monthEl.textContent) {
+    case 'January':   month = 1; break;
+    case 'February':  month = 2; break;
+    case 'March':     month = 3; break;
+    case 'April':     month = 4; break;
+    case 'May':       month = 5; break;
+    case 'June':      month = 6; break;
+    case 'July':      month = 7; break;
+    case 'August':    month = 8; break;
+    case 'September': month = 9; break;
+    case 'October':   month = 10; break;
+    case 'November':  month = 11; break;
+    case 'December':  month = 12; break;
+    default: console.error(`invalid month`);
+  }
+
+  console.log(`checking date ${dateM}=${month} and ${dateD}=${day}`);
+
+  return (dateM === month && dateD === day);
 }
 
 /**
