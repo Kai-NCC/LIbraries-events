@@ -695,5 +695,12 @@
 
     <script src="{{ '/scripts/utilities.js' | url }}" ></script>
 
+    <script>
+      window.onload = function() {
+        fillFields();
+        refreshResults();
+      }
+    </script>
+
   </section>
 {% endblock %}

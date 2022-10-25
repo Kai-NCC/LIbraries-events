@@ -161,3 +161,94 @@
 .date-overlay {
   display: none;
 }
+
+.card.library-event-card {
+  border-radius: 8px;
+
+  .type {
+    display: none;
+  }
+
+  .date-overlay {
+    display: none;
+  }
+
+  .card-body {
+    .card-title {
+      order: 1;
+      a {
+        font-weight: 800;
+      }
+    }
+    .card-location {
+      margin: 0;
+      font-weight: 700;
+    }
+    .card-date {
+      margin: 0;
+      font-weight: 600;
+      order: 0;
+    }
+    .card-text {
+      color: #767676;
+      font-weight: 500;
+      order: 3;
+    }
+    .flair {
+      font-size: 1.5rem;
+      color: $dark;
+      background-color: transparent;
+      padding: 0;
+      font-weight: 800;
+      margin-top: auto;
+      order: 4;
+    }
+    .card-extra-info {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+    &:focus-within {
+      box-shadow: none;
+    }
+
+    .img-wrapper {
+      max-height: 84px;
+    }
+
+    .card-body {
+      padding: 5px 10px 10px 10px;
+
+      .card-location {
+        font-size: 0.875rem;
+      }
+      .card-date {
+        font-size: 0.875rem;
+      }
+      .card-text {
+        font-size: 0.875rem;
+      }
+      .card-title {
+        margin-bottom: 0px;
+        font-size: 1.25rem;
+      }
+      .flair {
+        margin: 0px;
+        font-size: 1.25rem;
+      }
+    }
+  }
+  &:focus-within {
+    .card-body {
+      .card-text {
+        color: $focus-text-colour;
+      }
+    }
+  }
+}

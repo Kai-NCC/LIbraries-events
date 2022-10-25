@@ -62,11 +62,6 @@ let _currentPage = 1;
 let _numberOfPages = 1;
 let _filteredEvents = ALL_EVENTS;
 
-window.onload = function() {
-  fillFields();
-  refreshResults();
-}
-
 const refreshResults = function() {
   _currentPage = 1;
   _filteredEvents = applyFilters();
