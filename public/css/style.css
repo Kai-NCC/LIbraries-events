@@ -10305,6 +10305,7 @@ textarea.form-control-lg {
   color: #767676;
   font-weight: 500;
   order: 3;
+  margin: 0px 0px 5px 0px;
 }
 .card.library-event-card .card-body .flair {
   font-size: 1.5rem;
@@ -11641,7 +11642,7 @@ section.section_stage_theme .lead {
 }
 .search-component .selection-item {
   font-weight: 600;
-  color: #212529;
+  color: #767676;
   padding: 10px;
   font-size: 1.125rem;
   width: 50%;
@@ -11659,10 +11660,11 @@ section.section_stage_theme .lead {
 }
 .search-component .selection-item .form-check-label .form-check-input {
   background-color: #f8f9fa;
-  border: solid #212529 3px;
+  border: solid #767676 2px;
   min-width: 34px;
   min-height: 34px;
   margin: 0px 10px 0px 0px;
+  border-radius: 0.25rem;
 }
 .search-component .selection-item .form-check-label .form-check-input:active {
   box-shadow: none;
