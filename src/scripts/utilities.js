@@ -27,7 +27,11 @@
  * CONSTANTS
 ********************************************************************/
 
+const SEARCH_INPUT = document.querySelector('#libraries-search-input');
+const DATE = document.querySelector('#date');
+
 const LOCATION_DROPDOWN = document.getElementsByName('locationOption');
+const SUBJECT_DROPDOWN = document.getElementsByName('locationOption');
 
 const RESULTS_WRAPPER = document.querySelector('#page-content');
 
@@ -40,8 +44,14 @@ const MAX_EVENTS_PER_PAGE = 6;
 
 const ALL_EVENTS = document.querySelectorAll('.single-event-container');
 
+const FORM = document.querySelector('#main-search-form');
+function handleForm(e) {
+  e.preventDefault();
+} 
+FORM.addEventListener('submit', handleForm);
+
 // for filters testing
-setCookie('locationSelections', 'Acle, Diss', 1);
+setCookie('locationSelections', '', 1);
 
 /********************************************************************
  * UTILITIES
@@ -52,10 +62,6 @@ let _currentPage = 1;
 let _numberOfPages = 1;
 let _filteredEvents = ALL_EVENTS;
 
-window.onload = function() {
-  refreshResults();
-}
-
 const refreshResults = function() {
   _currentPage = 1;
   _filteredEvents = applyFilters();
@@ -63,10 +69,95 @@ const refreshResults = function() {
   console.log(`filtered events=`);
   console.log(_filteredEvents);
 
+  if (_filteredEvents.length === 0) {
+    console.log(`No results!`);
+    displayEvents(_filteredEvents, _currentPage);
+    return;
+  }
+
   calculatePageCount();
   updatePageLinks();
 
   displayEvents(_filteredEvents, _currentPage);
+}
+
+
+function fillFields() {
+  const dateCookie = getCookie('date');
+  const searchCookie = getCookie('searchQuery');
+
+  SEARCH_INPUT.value = searchCookie;
+  DATE.value = dateCookie;
+}
+
+const picker = document.querySelector('duet-date-picker');
+const output = document.querySelector('output');
+const DATE_FORMAT = /^(\d{1,2})-(\d{1,2})-(\d{4})$/;
+
+picker.dateAdapter = {
+  parse(value = "", createDate) {
+    const matches = value.match(DATE_FORMAT)
+    if (matches) {
+      return createDate(matches[3], matches[2], matches[1])
+    }
+  },
+  format(date) {
+    return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+  },
+}
+
+
+picker.localization = {
+  buttonLabel: "Choose date",
+  placeholder: "DD-MM-YYYY",
+  selectedDateMessage: "Selected date is",
+  prevMonthLabel: "Previous month",
+  nextMonthLabel: "Next month",
+  monthSelectLabel: "Month",
+  yearSelectLabel: "Year",
+  closeLabel: "Close window",
+  calendarHeading: "Choose a date",
+  dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  monthNames: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+  monthNamesShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  locale: "en-GB",
+}
+
+picker.addEventListener('duetChange', function(event) {
+  console.log(event.detail.value);
+  setCookie('date', event.detail.value, 1);
+  refreshResults();
+});
+
+const advancedSearchLink = function() {
+  // set search query, if any
+  const query = SEARCH_INPUT.value;
+  if (query)
+    setCookie('searchQuery', query, 1);
+  else
+    setCookie('searchQuery', '', 1);
+
+  const date = DATE.value;
+  if (date != '')
+    setCookie('date', date, 1);
+  else
+    setCookie('date', '', 1);
+
+  setCookie('goToFilters', 'yes', 1);
+  refreshResults();
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -97,39 +188,38 @@ function getCookie(cname) {
 ********************************************************************/
 
 
-const applyForm = function(filterType, form) {
-  if (filterType === 'location') {
-    let locations = [];
-    LOCATION_DROPDOWN.forEach(function(location) {
-      if (location.checked === true) {
-        locations.push(location.value);
-      }
-    });
-    setCookie('locationSelections', locations, 1);
+const applyForm = function(filterType, cookie) {
+  let dropdown;
+  switch (filterType) {
+    case ('location'):
+      dropdown = LOCATION_DROPDOWN;
+    case ('subject'):
+      dropdown = SUBJECT_DROPDOWN;
+    default:
+      dropdown = LOCATION_DROPDOWN;
+      // in practice this may never be used.
+      // replace with return?
   }
+
+  let items = [];
+  dropdown.forEach(function(checkbox) {
+    if (checkbox.checked === true) {
+      items.push(checkbox.value);
+    }
+  });
+  setCookie(cookie, items, 1);
+
   refreshResults();
 }
 
-const clearForm = function(filterType) {
-  switch(filterType) {
-    case 'location':
-      setCookie('locationSelections', '', 1);
-      break;
-    case 'subject':
-      setCookie('subjectSelections', '', 1);
-      break;
-    case 'date':
-      setCookie('dateSelections', '', 1);
-      break;
-    default:
-      console.error(`cannot clear filter "${filterType}" - does not exist`);
-  }
+const clearForm = function(cookie) {
+  setCookie(cookie, '', 1);
   _filteredEvents = applyFilters();
   refreshResults();
   return;
 }
 
-const applyFilters = function() {
+const applyFiltersOld = function() {
   const locations = getCookie('locationSelections');
   const filteredEventsLocation = [...ALL_EVENTS].filter(function (e) {
     const s = e.id.split('-');
@@ -138,6 +228,34 @@ const applyFilters = function() {
     return checkLocation(eventNum, locations);
   });
   return filteredEventsLocation;
+}
+
+// works, using as demo
+const applyFilters = function() {
+  const locations = getCookie('locationSelections');
+  //const subject = getCookie('subjectSelections');
+
+
+  const filteredEvents = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+    //const subject = document.querySelector(`#result-${eventNum}-subject`);
+
+    let match = false;
+
+    if (checkLocation(eventNum, locations) && checkDate(eventNum, getCookie('date')) && checkSearch(eventNum, getCookie('searchQuery'))) {
+      match = true;
+    }
+
+    return match;
+  });
+
+  console.log('object test:');
+  applyFiltersNew();
+  
+  return filteredEvents;
 }
 
 function checkLocation(n, cookie) {
@@ -153,6 +271,124 @@ function checkLocation(n, cookie) {
   });
   return match;
 }
+
+function checkDate(n, cookie) {
+  if (cookie == '') {
+    return true;
+  }
+
+  // YYYY-MM-DD
+  const date = cookie.split("-");
+
+  const dateM = Number(date[1]);
+  const dateD = Number(date[2]);
+
+  const monthEl = document.getElementById(`result-${n}-month`);
+  const dayEl = document.getElementById(`result-${n}-day`);
+  let month = 0;
+  let day = +dayEl.textContent; // the '+' converts from a string to a number :)
+
+  switch (monthEl.textContent) {
+    case 'January':   month = 1; break;
+    case 'February':  month = 2; break;
+    case 'March':     month = 3; break;
+    case 'April':     month = 4; break;
+    case 'May':       month = 5; break;
+    case 'June':      month = 6; break;
+    case 'July':      month = 7; break;
+    case 'August':    month = 8; break;
+    case 'September': month = 9; break;
+    case 'October':   month = 10; break;
+    case 'November':  month = 11; break;
+    case 'December':  month = 12; break;
+    default: console.error(`invalid month`);
+  }
+
+  console.log(`checking date ${dateM}=${month} and ${dateD}=${day}`);
+
+  return (dateM === month && dateD === day);
+}
+
+function checkSearch(n, cookie) {
+  if (cookie == '')
+    return true;
+  const typeEl = document.getElementById(`result-${n}-type`);
+  const locationEl = document.getElementById(`result-${n}-location`);
+  const titleEl = document.getElementById(`result-${n}-title`);
+  const descEl = document.getElementById(`result-${n}-desc`);
+  let match = false;
+  return typeEl.textContent.toLowerCase().includes(cookie.toLowerCase())
+      || locationEl.textContent.toLowerCase().includes(cookie.toLowerCase()) 
+      || titleEl.textContent.toLowerCase().includes(cookie.toLowerCase())
+      || descEl.textContent.toLowerCase().includes(cookie.toLowerCase());
+}
+
+/**
+ * 
+ * 1. store cookie contents as variables
+ * 2. for each cookies, store values as array
+ * 3. cycle through events list once
+ * 
+ * for each event {
+ *   if event matches every filter {
+ *     add to filteredLocations
+ *   } else {
+ *     hide and skip
+ *   }
+ * }
+ * 
+ */
+
+const applyFiltersNew = function() {
+  //const locations = getCookie('locationSelections').split(",");
+  //const subjects = getCookie('subjectSelections').split(",");
+
+  //const filterList = [locations];
+  // filterList is an array of objects, where each object has a "name" and an array of filters
+  // eg. locations = {filters: [Norwich, Dereham]}
+
+  const locations = {
+    name: 'location',
+    filters: getCookie('locationSelections').split(","),
+  };
+
+  const filterList = [locations];
+
+  console.log(locations);
+
+  const filteredEvents = [...ALL_EVENTS].filter(function (e) {
+    const s = e.id.split('-');
+    const eventNum = s[1];
+
+    filterList.forEach(function(f) {
+      const value = document.querySelector(`#result-${eventNum}-${f.name}`);
+      let match = false;
+      console.log(`does ${f.filters} match ${value.textContent}?`);
+      f.filters.forEach(function (item) {
+        if (value.textContent.includes(item)) {
+          console.log(true);
+          match = true;
+        } else {
+          console.log(false);
+        }
+      });
+    });
+
+    /*
+    const loc = document.querySelector(`#result-${eventNum}-location`);
+
+    let match = false;
+
+    if (checkLocation(eventNum, locations)) {
+      match = true;
+    }
+
+    return match;
+    */
+  });
+  //return filteredEvents;
+}
+
 
 /********************************************************************
  * PAGINATION

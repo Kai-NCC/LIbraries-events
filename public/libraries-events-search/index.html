@@ -98,9 +98,9 @@
           <h1 class="h2">Libraries events search</h1>
           <p class="text-muted mt-4 mb-2">Enter keywords to search libraries events</p>
           <div class="search-wrapper my-0">
-            <form class="form-inline d-flex libraries-search-area" role="search" action="/Libraries-events/public/" aria-label="Libraries events">
-              <input class="form-control" type="search" placeholder="" aria-label="Search">
-              <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="submit">Find events</button>
+            <form id="main-search-form" class="form-inline d-flex libraries-search-area" role="search" onsubmit="advancedSearchLink()" aria-label="Libraries events">
+              <input id="libraries-search-input" class="form-control" type="search" placeholder="" aria-label="Search">
+              <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="button" onclick="advancedSearchLink()">Find events</button>
             </form>
           </div>
           <div class="row mt-0 mb-5 g-md-4 g-2">
@@ -116,133 +116,135 @@
                       <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalLocationButton" data-bs-toggle="modal" data-bs-target="#filterModalLocation" aria-expanded="false"  data-bs-auto-close="outside">
                         Location
                       </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLocation">
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location1check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Acle" id="location1check">
-                            Acle
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location2check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Attleborough" id="location2check">
-                            Attleborough
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location3check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Aylsham" id="location3check">
-                            Aylsham
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location4check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Blofield" id="location4check">
-                            Blofield
-                          </label>
-                        </li>
+                      <div id="dropdown-container-location" class="dropdown-menu" aria-labelledby="dropdownMenuLocation">
+                        <ul id="dropdown-menu-location">
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location1check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Acle" id="location1check">
+                              Acle
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location2check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Attleborough" id="location2check">
+                              Attleborough
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location3check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Aylsham" id="location3check">
+                              Aylsham
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location4check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Blofield" id="location4check">
+                              Blofield
+                            </label>
+                          </li>
 
-                        <li class="selection-item">  
-                          <label class="form-check-label" for="location5check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Brundall" id="location5check">
-                            Brundall
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location6check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Caister" id="location6check">
-                            Caister
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location7check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Costessy" id="location7check">
-                            Costessy
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location8check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Cromer" id="location8check">
-                            Cromer
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location9check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Dereham" id="location9check">
-                            Dereham
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location10check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Dersingham" id="location10check">
-                            Dersingham
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location11check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Diss" id="location11check">
-                            Diss
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location12check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Downham Market" id="location12check">
-                            Downham Market
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location13check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Earlham Norwich" id="location13check">
-                            Earlham Norwich
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location14check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Fakenham" id="location14check">
-                            Fakenham
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location15check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Gaywood" id="location15check">
-                            Gaywood
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location16check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Gorleston" id="location16check">
-                            Gorleston
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location17check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Great Yarmouth" id="location17check">
-                            Great Yarmouth
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location18check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Harleston" id="location18check">
-                            Harleston
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location19check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Hellesdon" id="location19check">
-                            Hellesdon
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="location20check">
-                            <input type="checkbox" class="form-check-input" name="locationOption" value="Hethersett" id="location20check">
-                            Hethersett
-                          </label>
-                        </li>
-                        <li class="dropdown-bottom-section">
-                          <button class="filter-control-btn clear-filters" type="button" onclick="clearForm('location')">Clear filters</button>
-                          <button class="filter-control-btn apply-filter" type="button" onclick="applyForm('location', this.form.locationOption)">Apply filters</button>
-                        </li>
-                      </ul>
+                          <li class="selection-item">  
+                            <label class="form-check-label" for="location5check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Brundall" id="location5check">
+                              Brundall
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location6check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Caister" id="location6check">
+                              Caister
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location7check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Costessy" id="location7check">
+                              Costessy
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location8check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Cromer" id="location8check">
+                              Cromer
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location9check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Dereham" id="location9check">
+                              Dereham
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location10check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Dersingham" id="location10check">
+                              Dersingham
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location11check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Diss" id="location11check">
+                              Diss
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location12check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Downham Market" id="location12check">
+                              Downham Market
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location13check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Earlham Norwich" id="location13check">
+                              Earlham Norwich
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location14check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Fakenham" id="location14check">
+                              Fakenham
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location15check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Gaywood" id="location15check">
+                              Gaywood
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location16check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Gorleston" id="location16check">
+                              Gorleston
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location17check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Great Yarmouth" id="location17check">
+                              Great Yarmouth
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location18check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Harleston" id="location18check">
+                              Harleston
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location19check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Hellesdon" id="location19check">
+                              Hellesdon
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="location20check">
+                              <input type="checkbox" class="form-check-input" name="locationOption" value="Hethersett" id="location20check">
+                              Hethersett
+                            </label>
+                          </li>
+                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearForm('locationSelections')">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyForm('location', 'locationSelections')">Apply filters</button>
+                        </div>
+                      </div>
                     </div>
                   </form>
                   <form id="subjectDropdownForm">
@@ -253,96 +255,98 @@
                       <button class="modal-btn btn btn-outline-dark" type="button" id="filterModalSubjectButton" data-bs-toggle="modal" data-bs-target="#filterModalSubject" aria-expanded="false"  data-bs-auto-close="outside">
                         Subject
                       </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuSubject">
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject1check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Autism-friendly" id="subject1check">
-                            Autism-friendly
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject2check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Baby and Toddlers" id="subject2check">
-                            Baby and Toddlers
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject3check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Business & Enterprise" id="subject3check">
-                            Business & Enterprise
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject4check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Crafting" id="subject4check">
-                            Crafting
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject5check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Creativity" id="subject5check">
-                            Creativity
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject6check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Cultural Activities" id="subject6check">
-                            Cultural Activities
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject7check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Digital" id="subject7check">
-                            Digital
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject8check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Family Fun" id="subject8check">
-                            Family Fun
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject9check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Health and Wellbeing" id="subject9check">
-                            Health and Wellbeing
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject10check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Heritage" id="subject10check">
-                            Heritage
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject11check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Reading" id="subject11check">
-                            Reading
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject12check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="SEND" id="subject12check">
-                            SEND
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject13check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Skills and Training" id="subject13check">
-                            Skills and Training
-                          </label>
-                        </li>
-                        <li class="selection-item">
-                          <label class="form-check-label" for="subject14check">
-                            <input type="checkbox" class="form-check-input" name="subjectOption" value="Young People" id="subject14check">
-                            Young People
-                          </label>
-                        </li>
-                        <li class="dropdown-bottom-section">
-                          <button class="filter-control-btn clear-filters" type="button" onclick="clearFiltersSubject()">Clear filters</button>
-                          <button class="filter-control-btn apply-filter" type="button" onclick="applyFiltersSubject(this.form.subjectOption)">Apply filters</button>
-                        </li>
-                      </ul>
+                      <div id="dropdown-container-subject" class="dropdown-menu" aria-labelledby="dropdownMenuSubject">
+                        <ul id="dropdown-menu-subject">
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject1check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Autism-friendly" id="subject1check">
+                              Autism-friendly
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject2check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Baby and Toddlers" id="subject2check">
+                              Baby and Toddlers
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject3check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Business & Enterprise" id="subject3check">
+                              Business & Enterprise
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject4check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Crafting" id="subject4check">
+                              Crafting
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject5check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Creativity" id="subject5check">
+                              Creativity
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject6check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Cultural Activities" id="subject6check">
+                              Cultural Activities
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject7check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Digital" id="subject7check">
+                              Digital
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject8check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Family Fun" id="subject8check">
+                              Family Fun
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject9check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Health and Wellbeing" id="subject9check">
+                              Health and Wellbeing
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject10check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Heritage" id="subject10check">
+                              Heritage
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject11check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Reading" id="subject11check">
+                              Reading
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject12check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="SEND" id="subject12check">
+                              SEND
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject13check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Skills and Training" id="subject13check">
+                              Skills and Training
+                            </label>
+                          </li>
+                          <li class="selection-item">
+                            <label class="form-check-label" for="subject14check">
+                              <input type="checkbox" class="form-check-input" name="subjectOption" value="Young People" id="subject14check">
+                              Young People
+                            </label>
+                          </li>
+                        </ul>
+                        <div class="dropdown-bottom-section">
+                          <button class="filter-control-btn clear-filters" type="button" onclick="clearForm('subjectSelections')">Clear filters</button>
+                          <button class="filter-control-btn apply-filter" type="button" onclick="applyForm('subject', 'subjectSelections')">Apply filters</button>
+                        </div>
+                      </div>
                     </div>
                   </form>
                   <form id="dateDropdownForm">
@@ -1011,7 +1015,7 @@
     
 
     
-    <p id="result-7-desc" class="card-text">Science, Technology and Fun.</p>
+    <p id="result-7-desc" class="card-text">Come and join in on some board games.</p>
     
 
   </div>
@@ -1327,7 +1331,502 @@
     
 
     
-    <p id="result-14-desc" class="card-text">Science, Technology and Fun.</p>
+    <p id="result-14-desc" class="card-text">Come and join in on some board games.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-15-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-15-month" class="month">October</div>
+    <div aria-hidden="true" id="result-15-day" class="day">26</div>
+  </div>
+  <div aria-hidden="true" id="result-15-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-15-title" class="card-title h3"><a class="stretched-link" aria-label="15 Dementia Support Group on October 26 at 10am" href="/Libraries-events/public//">15 Dementia Support Group</a></h3>
+    
+
+    
+    <p id="result-15-location" class="card-location">Gorleston • Gorleston Library</p>
+    
+
+    
+    <p class="card-date">26 October 2022 • 10am</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-15-desc" class="card-text">Relaxed, informal and free sessions with crafts, conversation and refreshments for unpaid family carers of people living with Dementia and those they care for.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-16-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-16-month" class="month">October</div>
+    <div aria-hidden="true" id="result-16-day" class="day">28</div>
+  </div>
+  <div aria-hidden="true" id="result-16-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-16-title" class="card-title h3"><a class="stretched-link" aria-label="16 Learn My Way IT Support on October 28 at 4pm" href="/Libraries-events/public//">16 Learn My Way IT Support</a></h3>
+    
+
+    
+    <p id="result-16-location" class="card-location">Gorleston • Gorleston Library</p>
+    
+
+    
+    <p class="card-date">28 October 2022 • 4pm</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-16-desc" class="card-text">Learn My Way 1-1 Computer Sessions for beginners supported by Adult Learning.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-17-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-17-month" class="month">October</div>
+    <div aria-hidden="true" id="result-17-day" class="day">25</div>
+  </div>
+  <div aria-hidden="true" id="result-17-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-17-title" class="card-title h3"><a class="stretched-link" aria-label="17 Lego Club on October 25 at 4pm" href="/Libraries-events/public//">17 Lego Club</a></h3>
+    
+
+    
+    <p id="result-17-location" class="card-location">Gorleston • Gorleston Library</p>
+    
+
+    
+    <p class="card-date">25 October 2022 • 4pm</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-17-desc" class="card-text">Each session brick defying Lego challenges are set to really get your children enjoying creative problem solving and just having fun with other children.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-18-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-18-month" class="month">October</div>
+    <div aria-hidden="true" id="result-18-day" class="day">28</div>
+  </div>
+  <div aria-hidden="true" id="result-18-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-18-title" class="card-title h3"><a class="stretched-link" aria-label="18 Knit, Stitch and Natter on October 28 at 10am" href="/Libraries-events/public//">18 Knit, Stitch and Natter</a></h3>
+    
+
+    
+    <p id="result-18-location" class="card-location">Dereham • Dereham Library</p>
+    
+
+    
+    <p class="card-date">28 October 2022 • 10am</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-18-desc" class="card-text">A friendly drop-in session for those who knit, sew or crochet. Please check with your library for frequency of this event as some may run fortnightly, or monthly.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-19-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-19-month" class="month">November</div>
+    <div aria-hidden="true" id="result-19-day" class="day">1</div>
+  </div>
+  <div aria-hidden="true" id="result-19-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-19-title" class="card-title h3"><a class="stretched-link" aria-label="19 Perfumed Verse Arabic Calligraphy Workshop with Razwan Ul- Haq on November 1 at 2:30pm" href="/Libraries-events/public//">19 Perfumed Verse Arabic Calligraphy Workshop with Razwan Ul- Haq</a></h3>
+    
+
+    
+    <p id="result-19-location" class="card-location">Dereham • Dereham Library</p>
+    
+
+    
+    <p class="card-date">1 November 2022 • 2:30pm</p>
+    
+
+
+    
+    <span class="flair flair-full">£5</span>
+    
+
+    
+    <p class="card-extra-info">Course full</p>
+    
+
+    
+    <p id="result-19-desc" class="card-text">Join Razwan Ul-Haq and explore responding to natural scents, using bamboo pens and handmade inks. The Project is supported by the Arts Council. Suitable for adults and anyone 12+.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-20-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-20-month" class="month">October</div>
+    <div aria-hidden="true" id="result-20-day" class="day">28</div>
+  </div>
+  <div aria-hidden="true" id="result-20-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-20-title" class="card-title h3"><a class="stretched-link" aria-label="20 Chair Yoga on October 28 at 2pm" href="/Libraries-events/public//">20 Chair Yoga</a></h3>
+    
+
+    
+    <p id="result-20-location" class="card-location">Downham Market • Downham Market Library</p>
+    
+
+    
+    <p class="card-date">28 October 2022 • 2pm</p>
+    
+
+
+    
+    <span class="flair flair-full">£4.17</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-20-desc" class="card-text">Science, Technology and Fun.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-21-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-21-month" class="month">October</div>
+    <div aria-hidden="true" id="result-21-day" class="day">29</div>
+  </div>
+  <div aria-hidden="true" id="result-21-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-21-title" class="card-title h3"><a class="stretched-link" aria-label="21 Children&#39;s Story Time &amp; Craft Club on October 29 at 10:30am" href="/Libraries-events/public//">21 Children&#39;s Story Time &amp; Craft Club</a></h3>
+    
+
+    
+    <p id="result-21-location" class="card-location">Aylsham • Aylsham Library </p>
+    
+
+    
+    <p class="card-date">29 October 2022 • 10:30am</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-21-desc" class="card-text">Come and join us for a children&#39;s story followed by craft, a different theme each week. You can come along for one or the other, or both.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-22-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-22-month" class="month">October</div>
+    <div aria-hidden="true" id="result-22-day" class="day">31</div>
+  </div>
+  <div aria-hidden="true" id="result-22-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-22-title" class="card-title h3"><a class="stretched-link" aria-label="22 Just a Cuppa on October 31 at 11am" href="/Libraries-events/public//">22 Just a Cuppa</a></h3>
+    
+
+    
+    <p id="result-22-location" class="card-location">Aylsham • Aylsham Library </p>
+    
+
+    
+    <p class="card-date">31 October 2022 • 11am</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-22-desc" class="card-text">Fancy making some new friends, or just to have a good old chat?</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-23-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-23-month" class="month">November</div>
+    <div aria-hidden="true" id="result-23-day" class="day">7</div>
+  </div>
+  <div aria-hidden="true" id="result-23-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-23-title" class="card-title h3"><a class="stretched-link" aria-label="23 Just a Cuppa on November 7 at 11am" href="/Libraries-events/public//">23 Just a Cuppa</a></h3>
+    
+
+    
+    <p id="result-23-location" class="card-location">Aylsham • Aylsham Library </p>
+    
+
+    
+    <p class="card-date">07 November 2022 • 11am</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-23-desc" class="card-text">Fancy making some new friends, or just to have a good old chat?</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-24-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-24-month" class="month">November</div>
+    <div aria-hidden="true" id="result-24-day" class="day">1</div>
+  </div>
+  <div aria-hidden="true" id="result-24-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-24-title" class="card-title h3"><a class="stretched-link" aria-label="24 Board Games for Adults on November 1 at 5pm" href="/Libraries-events/public//">24 Board Games for Adults</a></h3>
+    
+
+    
+    <p id="result-24-location" class="card-location">Aylsham • Aylsham Library </p>
+    
+
+    
+    <p class="card-date">01 November 2022 • 5pm</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-24-desc" class="card-text">Come and join in on some board games.</p>
+    
+
+  </div>
+</div>
+
+
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-25-wrapper">
+                
+
+<div class="card card-light  library-event-card h-100 " data-component="72">
+
+  <div class="date-overlay">
+    <div aria-hidden="true" id="result-25-month" class="month">November</div>
+    <div aria-hidden="true" id="result-25-day" class="day">2</div>
+  </div>
+  <div aria-hidden="true" id="result-25-type" class="type"></div>
+
+  
+
+  <div class="card-body">
+
+    
+    <h3 id="result-25-title" class="card-title h3"><a class="stretched-link" aria-label="25 Digital Support on November 2 at 1pm" href="/Libraries-events/public//">25 Digital Support</a></h3>
+    
+
+    
+    <p id="result-25-location" class="card-location">Aylsham • Aylsham Library </p>
+    
+
+    
+    <p class="card-date">02 November 2022 • 1pm</p>
+    
+
+
+    
+    <span class="flair flair-full">Free</span>
+    
+
+    
+    <p class="card-extra-info">1 session • places available</p>
+    
+
+    
+    <p id="result-25-desc" class="card-text">Face to face one to one digital help with getting online from setting up an email to job seeking online and searching the internet.</p>
     
 
   </div>
@@ -1350,6 +1849,13 @@
     </div>
 
     <script src="/Libraries-events/public/scripts/utilities.js" ></script>
+
+    <script>
+      window.onload = function() {
+        fillFields();
+        refreshResults();
+      }
+    </script>
 
   </section>
 
