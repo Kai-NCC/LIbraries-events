@@ -212,6 +212,12 @@
   @include media-breakpoint-down(sm) {
     box-shadow: none;
 
+    //background-color: red;
+
+    &:nth-child(5) {
+      background-color: aqua;
+    }
+
     &:hover {
       box-shadow: none;
     }
@@ -250,6 +256,14 @@
       .card-text {
         color: $focus-text-colour;
       }
+    }
+  }
+}
+
+#page-content {
+  @include media-breakpoint-down(sm) {
+    .card.library-event-card:nth-child(3n+3) {
+      background-color: aqua;
     }
   }
 }

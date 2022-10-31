@@ -10323,6 +10323,9 @@ textarea.form-control-lg {
   .card.library-event-card {
     box-shadow: none;
   }
+  .card.library-event-card:nth-child(5) {
+    background-color: aqua;
+  }
   .card.library-event-card:hover {
     box-shadow: none;
   }
@@ -10355,6 +10358,12 @@ textarea.form-control-lg {
 }
 .card.library-event-card:focus-within .card-body .card-text {
   color: #0b0c0c;
+}
+
+@media (max-width: 575.98px) {
+  #page-content .card.library-event-card:nth-child(3n+3) {
+    background-color: aqua;
+  }
 }
 
 .navcard {
@@ -11643,7 +11652,7 @@ section.section_stage_theme .lead {
 .search-component .selection-item {
   font-weight: 600;
   color: #767676;
-  padding: 10px;
+  padding: 5px 20px;
   font-size: 1.125rem;
   width: 50%;
   margin: 0;
@@ -11690,6 +11699,20 @@ section.section_stage_theme .lead {
 .search-component .selection-item .form-check-label:focus-within .text-wrapper .smaller-text {
   color: #0b0c0c;
 }
+.search-component .dropdown-top-section {
+  padding: 20px 20px 10px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.search-component .dropdown-top-section .dropdown-heading {
+  font-weight: 700;
+  margin: 0;
+}
+.search-component .dropdown-top-section .close {
+  background-color: gray;
+  max-width: 50px !important;
+}
 .search-component .dropdown-bottom-section {
   display: flex;
   justify-content: space-between;
@@ -11706,7 +11729,7 @@ section.section_stage_theme .lead {
 .search-component .dropdown-bottom-section .filter-control-btn {
   width: auto;
   border-radius: 5px;
-  padding: 5px 15px 5px 15px;
+  padding: 0.375rem 0.75rem;
   box-sizing: border-box;
   background-color: white;
   border-color: #212529;
@@ -11921,6 +11944,7 @@ section.section_stage_theme .lead {
   background-color: #ffdd00;
   color: #0b0c0c;
   transition: none;
+  text-decoration: underline;
 }
 .pagination.libraries-pagination .page-item .page-link:focus:focus-visible,
 .pagination.libraries-pagination .page-item.active .page-link:focus:focus-visible {
@@ -11928,6 +11952,7 @@ section.section_stage_theme .lead {
   background-color: #ffdd00;
   color: #0b0c0c;
   transition: none;
+  text-decoration: underline;
 }
 .pagination.libraries-pagination .page-item .page-link:focus:not(:focus-visible),
 .pagination.libraries-pagination .page-item.active .page-link:focus:not(:focus-visible) {
@@ -11937,6 +11962,21 @@ section.section_stage_theme .lead {
 .pagination.libraries-pagination .page-item .page-link:focus:not(:focus-visible),
 .pagination.libraries-pagination .page-item.active .page-link:focus:not(:focus-visible) {
   outline: solid #0b0c0c 2px;
+}
+
+.btn-dismiss-dropdown:focus {
+  transition: none;
+  border-color: #ffdd00;
+  background-color: #ffdd00;
+  color: #0b0c0c;
+  outline: none;
+  box-shadow: none;
+}
+.btn-dismiss-dropdown:focus path {
+  fill: #0b0c0c;
+}
+.btn-dismiss-dropdown:active:focus {
+  box-shadow: none;
 }
 
 input[type=checkbox i]:focus-visible {
