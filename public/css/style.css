@@ -10323,9 +10323,6 @@ textarea.form-control-lg {
   .card.library-event-card {
     box-shadow: none;
   }
-  .card.library-event-card:nth-child(5) {
-    background-color: aqua;
-  }
   .card.library-event-card:hover {
     box-shadow: none;
   }
@@ -10361,8 +10358,17 @@ textarea.form-control-lg {
 }
 
 @media (max-width: 575.98px) {
-  #page-content .card.library-event-card:nth-child(3n+3) {
-    background-color: aqua;
+  .single-event-container {
+    border-bottom: solid #ccc 1px;
+  }
+  .single-event-container:focus-within {
+    border-bottom: solid transparent 1px;
+  }
+  .single-event-container:nth-child(6n+6) {
+    border-bottom: solid transparent 1px;
+  }
+  .single-event-container:nth-last-child(1) {
+    border-bottom: solid transparent 1px;
   }
 }
 

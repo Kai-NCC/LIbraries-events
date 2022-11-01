@@ -212,12 +212,6 @@
   @include media-breakpoint-down(sm) {
     box-shadow: none;
 
-    //background-color: red;
-
-    &:nth-child(5) {
-      background-color: aqua;
-    }
-
     &:hover {
       box-shadow: none;
     }
@@ -260,10 +254,20 @@
   }
 }
 
-#page-content {
+.single-event-container {
   @include media-breakpoint-down(sm) {
-    .card.library-event-card:nth-child(3n+3) {
-      background-color: aqua;
+
+    border-bottom: solid #ccc 1px;
+
+    &:focus-within {
+      border-bottom: solid transparent 1px;
+    }
+
+    &:nth-child(6n+6) {
+      border-bottom: solid transparent 1px;
+    }
+    &:nth-last-child(1) {
+      border-bottom: solid transparent 1px;
     }
   }
 }
