@@ -429,7 +429,7 @@ const calculatePageCount = function() {
 const displayEvents = function(events, page) {
   [...ALL_EVENTS].forEach(e => e.style.display = 'none');
   for (i = 0; i < events.length; i++) {
-    events[i].style.display = 'none';
+    events[i].style.display = 'none'; // probably not needed
     if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
       events[i].style.display = 'block';
     }
