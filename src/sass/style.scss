@@ -193,3 +193,7 @@ button:focus:not(:focus-visible) {
 .btn:focus {
   outline: solid $focus-text-colour 2px;
 }
+
+.libraries-search-stage {
+  border-bottom: solid #ccc 1px;
+}

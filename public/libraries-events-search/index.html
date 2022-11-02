@@ -91,9 +91,9 @@
     </div>
   </section>
 
-  <section>
+  <section class="libraries-search-stage">
     <div class="container">
-      <div class="row mt-0 mb-5 g-md-4 g-2">
+      <div class="row mb-2">
         <div class="col-12">
           <h1 class="h2">Libraries events search</h1>
           <p class="text-muted mt-4 mb-2">Enter keywords to search libraries events</p>
@@ -103,7 +103,7 @@
               <button id="libraries-search-button" class="btn btn-outline-light d-inline-flex justify-content-between" type="button" onclick="advancedSearchLink()">Find events</button>
             </form>
           </div>
-          <div class="row mt-0 mb-5 g-md-4 g-2">
+          <div class="row mb-2 mt-3">
             <div class="search-component">
               <h2 class="mt-2 mb-0">Search filters</h2>
               <div class="search-settings">
@@ -711,10 +711,17 @@
                 </div>
               </div> 
             </div>
-            <hr class="ncc-hr">
-            <h2 id="search-indicator" class="m0"></h3>
-            <h3 id="multi-filter-indicator" class="m0"></h3>
-            <h2 id="result-number-indicator" class="h3" aria-live="polite"></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row mt-0 mb-5 g-md-4 g-2">
+
+            
             <div class="row mt-0 mb-5 g-md-4 g-2" id="page-content">
               <div class="col-12 col-sm-6 col-lg-4 single-event-container" id="result-1-wrapper">
                 
@@ -1850,22 +1857,19 @@
                 
               </ul>
             </nav>
-
-          </div>
-        </div>
       </div>
     </div>
-
-    <script src="/Libraries-events/public/scripts/utilities.js" ></script>
-
-    <script>
-      window.onload = function() {
-        fillFields();
-        refreshResults();
-      }
-    </script>
-
   </section>
+
+  <script src="/Libraries-events/public/scripts/utilities.js" ></script>
+
+  <script>
+    window.onload = function() {
+      fillFields();
+      refreshResults();
+    }
+  </script>
+
 
   </main>
   <footer>

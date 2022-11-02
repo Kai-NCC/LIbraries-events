@@ -12633,6 +12633,11 @@ button:focus:not(:focus-visible) {
   color: #0b0c0c;
   opacity: 1;
 }
+@media (max-width: 767.98px) {
+  .duet-date__input {
+    height: 40px;
+  }
+}
 
 .duet-date__toggle {
   border: solid 0px black;
@@ -12838,6 +12843,10 @@ button:focus:not(:focus-visible) {
 .btn-check:focus + .btn,
 .btn:focus {
   outline: solid #0b0c0c 2px;
+}
+
+.libraries-search-stage {
+  border-bottom: solid #ccc 1px;
 }
 
 /*# sourceMappingURL=style.css.map */
