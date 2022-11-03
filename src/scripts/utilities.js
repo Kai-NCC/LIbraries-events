@@ -160,6 +160,26 @@ const advancedSearchLink = function() {
   refreshResults();
 }
 
+const dismissDropdowns = function(btnID) {
+  // const id = btnID.split('-');
+  // const dropdownID = id[1];
+  // console.log(`ID = ${dropdownID}`);
+  dropdownID = btnID;
+  dropdownID = dropdownID.toLowerCase();
+  console.log(`dropdownID = ${dropdownID}`);
+
+  const dropdownMenu = document.querySelector(`#dropdown-container-${dropdownID}`);
+  console.log(`before`);
+  console.log(dropdownMenu);
+  dropdownMenu.classList.remove('show');
+  console.log(`after`);
+  console.log(dropdownMenu);
+
+  const dropdownToggleBtn = document.querySelector(`#dropdownMenu${btnID}`);
+  dropdownToggleBtn.classList.remove('show');
+  dropdownToggleBtn.setAttribute('aria-expanded', 'false');
+}
+
 function setCookie(cname, cvalue, exdays) {
   const d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -409,7 +429,7 @@ const calculatePageCount = function() {
 const displayEvents = function(events, page) {
   [...ALL_EVENTS].forEach(e => e.style.display = 'none');
   for (i = 0; i < events.length; i++) {
-    events[i].style.display = 'none';
+    events[i].style.display = 'none'; // probably not needed
     if (i >= (MAX_EVENTS_PER_PAGE * (page - 1)) && i < MAX_EVENTS_PER_PAGE * page) {
       events[i].style.display = 'block';
     }

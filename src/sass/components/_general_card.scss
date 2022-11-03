@@ -253,3 +253,21 @@
     }
   }
 }
+
+.single-event-container {
+  @include media-breakpoint-down(sm) {
+
+    border-bottom: solid #ccc 1px;
+
+    &:focus-within {
+      border-bottom: solid transparent 1px;
+    }
+
+    &:nth-child(6n+6) {
+      border-bottom: solid transparent 1px;
+    }
+    &:nth-last-child(1) {
+      border-bottom: solid transparent 1px;
+    }
+  }
+}
